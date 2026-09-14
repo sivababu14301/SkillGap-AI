@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Role Selection â€“ SkillGap AI</title>
+    <meta name="description" content="Select your target job role to analyze your skills against industry requirements.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="job-role.css">
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span class="logo-icon"><i class="fas fa-robot"></i></span>
+                <span class="logo-text">SkillGap <span class="logo-ai">AI</span></span>
+            </div>
+            <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">Main Menu</div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="dashboard.html" class="nav-link"><span class="nav-icon"><i class="fas fa-th-large"></i></span><span class="nav-text">Dashboard</span></a></li>
+                <li class="nav-item"><a href="upload-resume.html" class="nav-link"><span class="nav-icon"><i class="fas fa-file-upload"></i></span><span class="nav-text">Upload Resume</span></a></li>
+                <li class="nav-item active"><a href="job-role.html" class="nav-link"><span class="nav-icon"><i class="fas fa-briefcase"></i></span><span class="nav-text">Job Role Selection</span></a></li>
+                <li class="nav-item"><a href="skills-gap.html" class="nav-link"><span class="nav-icon"><i class="fas fa-chart-pie"></i></span><span class="nav-text">Skills Gap Analysis</span></a></li>
+                <li class="nav-item"><a href="resume-score.html" class="nav-link"><span class="nav-icon"><i class="fas fa-star"></i></span><span class="nav-text">Resume Score</span></a></li>
+                <li class="nav-item"><a href="career-recommendations.html" class="nav-link"><span class="nav-icon"><i class="fas fa-rocket"></i></span><span class="nav-text">Career Recommendations</span></a></li>
+                <li class="nav-item"><a href="learning-roadmap.html" class="nav-link"><span class="nav-icon"><i class="fas fa-road"></i></span><span class="nav-text">Learning Roadmap</span></a></li>
+                <li class="nav-item"><a href="reports.html" class="nav-link"><span class="nav-icon"><i class="fas fa-file-alt"></i></span><span class="nav-text">Reports</span></a></li>
+            </ul>
+            <div class="nav-section-label">Account</div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="profile.html" class="nav-link"><span class="nav-icon"><i class="fas fa-user-circle"></i></span><span class="nav-text">Profile</span></a></li>
+                <li class="nav-item logout-item"><a href="#" class="nav-link" onclick="logout()"><span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span><span class="nav-text">Logout</span></a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-mini-card">
+                <div class="user-avatar-sm" id="sidebarAvatar">U</div>
+                <div class="user-mini-info">
+                    <span class="user-mini-name" id="sidebarName">User</span>
+                    <span class="user-mini-role">Student</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN WRAPPER ===== -->
+    <div class="main-wrapper" id="mainWrapper">
+
+        <!-- TOP HEADER -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+                <a href="dashboard.html" class="mobile-nav-logo" id="mobileLogo" style="display:none;">
+                    <span class="logo-icon"><i class="fas fa-robot"></i></span>
+                    <span class="logo-text">SkillGap <span class="logo-ai">AI</span></span>
+                </a>
+                <div class="page-breadcrumb">
+                    <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Job Role Selection</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn notif-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+                <div class="header-profile" id="headerProfile">
+                    <div class="profile-avatar" id="headerAvatar">U</div>
+                    <span class="profile-name" id="headerName">User</span>
+                    <i class="fas fa-chevron-down profile-arrow"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- PAGE CONTENT -->
+        <main class="dashboard-content">
+
+            <!-- Page Header -->
+            <div class="page-header-row">
+                <div>
+                    <h1 class="page-title"><i class="fas fa-bullseye"></i> Select Your Target Job Role</h1>
+                    <p class="page-subtitle">Choose from 28+ roles across 6 career categories to analyze your skills.</p>
+                </div>
+                <div class="step-indicator">
+                    <div class="step-dot done" title="Upload Resume"><span><i class="fas fa-check"></i></span><small>Upload</small></div>
+                    <div class="step-line active"></div>
+                    <div class="step-dot active" title="Job Role"><span>2</span><small>Job Role</small></div>
+                    <div class="step-line"></div>
+                    <div class="step-dot" title="Analysis"><span>3</span><small>Analysis</small></div>
+                    <div class="step-line"></div>
+                    <div class="step-dot" title="Results"><span>4</span><small>Results</small></div>
+                </div>
+            </div>
+
+            <!-- Domain Tabs -->
+            <div class="domain-tabs-container">
+                <div class="domain-tabs">
+                    <button class="domain-tab active" id="domain_IT" onclick="switchDomain('IT')">💻 IT</button>
+                    <button class="domain-tab" id="domain_NON_IT" onclick="switchDomain('NON-IT')">⚙️ NON-IT</button>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-container" style="margin-bottom: 20px;">
+                <div style="position: relative; max-width: 400px; width: 100%;">
+                    <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                    <input type="text" id="roleSearchInput" placeholder="Search for a job role..." style="width: 100%; padding: 12px 12px 12px 40px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-color); font-size: 1rem;">
+                </div>
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="category-tabs-container">
+                <div class="category-tabs" id="categoryTabs">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="job-role-layout">
+
+                <!-- Left Column: Role Grid -->
+                <div class="role-grid-col">
+                    <!-- Stats bar -->
+                    <div class="roles-stats-bar">
+                        <p class="roles-showing-label">Showing <span id="rolesCount">0</span> roles</p>
+                    </div>
+                    <div class="role-grid" id="roleGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Right Column: Details & Recommendation -->
+                <div class="role-details-col">
+                    <div class="role-details-col-inner">
+
+                        <!-- AI Suggestion Card -->
+                        <div class="dash-card ai-suggestion-card" id="aiSuggestionCard">
+                            <div class="ai-badge"><i class="fas fa-magic"></i> AI Recommended</div>
+                            <p class="rec-text">Based on your resume, our AI suggests you target:</p>
+                            <div class="rec-role-box" id="aiRoleBox">
+                                <div class="rec-role-icon"><i class="fab fa-python"></i></div>
+                                <div class="rec-role-info">
+                                    <h4>Python Developer</h4>
+                                    <p>Backend Engineering</p>
+                                </div>
+                                <div class="rec-confidence">
+                                    <span>85%</span>
+                                    <small>Confidence</small>
+                                </div>
+                            </div>
+                            <p class="rec-select-hint"><i class="fas fa-hand-pointer"></i> Click above to auto-select this role</p>
+                        </div>
+
+                        <!-- Selected Role Details Panel -->
+                        <div class="dash-card selected-role-panel" id="roleDetailsPanel">
+                            <!-- Default view (No role selected) -->
+                            <div id="noRoleSelected" class="no-role-view">
+                                <div class="no-role-illustration"><i class="fas fa-crosshairs"></i></div>
+                                <p>Select a job role card to view required skills and your match percentage.</p>
+                                <small>Click any card on the left to get started</small>
+                            </div>
+
+                            <!-- Details view (Role selected) -->
+                            <div id="roleDetailsContent" style="display:none;">
+                                <div class="role-details-header">
+                                    <div class="rd-icon rc-purple" id="rdIcon"><i class="fas fa-code"></i></div>
+                                    <div class="rd-role-info">
+                                        <h2 id="rdName">Python Developer</h2>
+                                        <span class="rd-category-badge" id="rdCategory"><i class="fas fa-tag"></i> Software Development</span>
+                                        <p class="rd-skills-count" id="rdCount">12 Required Skills</p>
+                                    </div>
+                                </div>
+
+                                <p class="rd-desc" id="rdDesc">Design, develop, and maintain backend services and APIs using Python frameworks.</p>
+
+                                <div class="rd-section">
+                                    <h4><i class="fas fa-list-check"></i> Required Core Skills</h4>
+                                    <div class="skills-tags" id="rdSkillsTags"></div>
+                                </div>
+
+                                <div class="rd-section match-preview-sec">
+                                    <div class="mp-header">
+                                        <p>Skill Match Preview</p>
+                                        <span class="mp-val" id="mpVal">--%</span>
+                                    </div>
+                                    <div class="mp-bar"><div class="mp-fill" id="mpFill" style="width:0%"></div></div>
+                                    <div class="mp-sub-stats">
+                                        <div class="mp-stat matched-stat">
+                                            <span class="val" id="mpMatched">0</span>
+                                            <span class="lbl">Matched</span>
+                                        </div>
+                                        <div class="mp-stat missing-stat">
+                                            <span class="val" id="mpMissing">0</span>
+                                            <span class="lbl">Missing</span>
+                                        </div>
+                                        <div class="mp-stat">
+                                            <span class="val" id="mpTotal">0</span>
+                                            <span class="lbl">Total Skills</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- /.role-details-col-inner -->
+
+                    <div class="action-row">
+                        <button class="btn-continue" id="continueBtn" onclick="goToAnalysis()" disabled>
+                            Continue to Skills Gap Analysis <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                </div><!-- /.role-details-col -->
+
+            </div><!-- /.job-role-layout -->
+
+        </main>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <script src="auth.js"></script>
+    <script src="groq.js"></script>
+    <script src="header.js"></script>
+    <script src="job-roles-data.js"></script>
+    <script src="job-role.js"></script>
+</body>
+</html>
+

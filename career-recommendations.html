@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Recommendations â€“ SkillGap AI</title>
+    <meta name="description" content="AI-powered career recommendations based on your resume, skills, match score and AI analysis.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="career-recommendations.css">
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span class="logo-icon"><i class="fas fa-robot"></i></span>
+                <span class="logo-text">SkillGap <span class="logo-ai">AI</span></span>
+            </div>
+            <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">Main Menu</div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="dashboard.html" class="nav-link"><span class="nav-icon"><i class="fas fa-th-large"></i></span><span class="nav-text">Dashboard</span></a></li>
+                <li class="nav-item"><a href="upload-resume.html" class="nav-link"><span class="nav-icon"><i class="fas fa-file-upload"></i></span><span class="nav-text">Upload Resume</span></a></li>
+                <li class="nav-item"><a href="job-role.html" class="nav-link"><span class="nav-icon"><i class="fas fa-briefcase"></i></span><span class="nav-text">Job Role Selection</span></a></li>
+                <li class="nav-item"><a href="skills-gap.html" class="nav-link"><span class="nav-icon"><i class="fas fa-chart-pie"></i></span><span class="nav-text">Skills Gap Analysis</span></a></li>
+                <li class="nav-item"><a href="resume-score.html" class="nav-link"><span class="nav-icon"><i class="fas fa-star"></i></span><span class="nav-text">Resume Score</span></a></li>
+                <li class="nav-item active"><a href="career-recommendations.html" class="nav-link"><span class="nav-icon"><i class="fas fa-rocket"></i></span><span class="nav-text">Career Recommendations</span></a></li>
+                <li class="nav-item"><a href="learning-roadmap.html" class="nav-link"><span class="nav-icon"><i class="fas fa-road"></i></span><span class="nav-text">Learning Roadmap</span></a></li>
+                <li class="nav-item"><a href="reports.html" class="nav-link"><span class="nav-icon"><i class="fas fa-file-alt"></i></span><span class="nav-text">Reports</span></a></li>
+            </ul>
+            <div class="nav-section-label">Account</div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="profile.html" class="nav-link"><span class="nav-icon"><i class="fas fa-user-circle"></i></span><span class="nav-text">Profile</span></a></li>
+                <li class="nav-item logout-item"><a href="#" class="nav-link" onclick="logout()"><span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span><span class="nav-text">Logout</span></a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-mini-card">
+                <div class="user-avatar-sm" id="sidebarAvatar">U</div>
+                <div class="user-mini-info">
+                    <span class="user-mini-name" id="sidebarName">User</span>
+                    <span class="user-mini-role">Student</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN WRAPPER ===== -->
+    <div class="main-wrapper" id="mainWrapper">
+
+        <header class="top-header">
+            <div class="header-left">
+                <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+                <a href="dashboard.html" class="mobile-nav-logo" id="mobileLogo" style="display:none;">
+                    <span class="logo-icon"><i class="fas fa-robot"></i></span>
+                    <span class="logo-text">SkillGap <span class="logo-ai">AI</span></span>
+                </a>
+                <div class="page-breadcrumb">
+                    <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Career Recommendations</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn notif-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+                <div class="header-profile" id="headerProfile">
+                    <div class="profile-avatar" id="headerAvatar">U</div>
+                    <span class="profile-name" id="headerName">User</span>
+                    <i class="fas fa-chevron-down profile-arrow"></i>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-content">
+
+            <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                 SECTION 0: PAGE HEADER + PROGRESS STEPPER
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+            <div class="cr-page-header">
+                <div class="cr-header-text">
+                    <h1 class="cr-main-title">
+                        <span class="cr-title-icon"><i class="fas fa-rocket"></i></span>
+                        Career Recommendations
+                        <span class="cr-title-badge">ðŸš€ AI Powered</span>
+                    </h1>
+                    <p class="cr-subtitle">Discover the best career opportunities based on your profile, skills &amp; AI analysis.</p>
+                </div>
+                <!-- Progress Stepper -->
+                <div class="cr-stepper" id="crStepper">
+                    <div class="stepper-item done">
+                        <div class="stepper-circle"><i class="fas fa-check"></i></div>
+                        <div class="stepper-label">Upload Resume</div>
+                    </div>
+                    <div class="stepper-connector done"></div>
+                    <div class="stepper-item done">
+                        <div class="stepper-circle"><i class="fas fa-check"></i></div>
+                        <div class="stepper-label">Job Role Selection</div>
+                    </div>
+                    <div class="stepper-connector done"></div>
+                    <div class="stepper-item done">
+                        <div class="stepper-circle"><i class="fas fa-check"></i></div>
+                        <div class="stepper-label">Skills Gap Analysis</div>
+                    </div>
+                    <div class="stepper-connector done"></div>
+                    <div class="stepper-item done">
+                        <div class="stepper-circle"><i class="fas fa-check"></i></div>
+                        <div class="stepper-label">Resume Score</div>
+                    </div>
+                    <div class="stepper-connector active"></div>
+                    <div class="stepper-item active">
+                        <div class="stepper-circle"><i class="fas fa-rocket"></i></div>
+                        <div class="stepper-label">Career Recommendations</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                 SECTION 1: TOP RECOMMENDATION (HERO CARD)
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+            <div class="cr-hero-card" id="topRecommendCard">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                 SECTION 2: RECOMMENDED CAREER CARDS GRID
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+            <div class="cr-section-header">
+                <h2 class="cr-section-title"><i class="fas fa-th-large"></i> Recommended Career Paths</h2>
+                <span class="cr-section-count" id="careerCount">5 matches found</span>
+            </div>
+            <div class="cr-jobs-grid" id="careerJobGrid">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                 SECTION 3: SKILLS STRENGTH + IMPROVE
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+            <div class="cr-two-col">
+
+                <!-- Strong Skills -->
+                <div class="dash-card cr-skills-card">
+                    <div class="cr-card-header cr-green-header">
+                        <div class="cr-card-icon cr-icon-green"><i class="fas fa-bolt"></i></div>
+                        <div>
+                            <h3>Strong Skills</h3>
+                            <p>Your competitive advantages</p>
+                        </div>
+                    </div>
+                    <div class="cr-tags-grid" id="strongSkillsGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Skills to Improve -->
+                <div class="dash-card cr-skills-card">
+                    <div class="cr-card-header cr-orange-header">
+                        <div class="cr-card-icon cr-icon-orange"><i class="fas fa-fire"></i></div>
+                        <div>
+                            <h3>Skills to Improve</h3>
+                            <p>Focus areas for career growth</p>
+                        </div>
+                    </div>
+                    <div class="cr-tags-grid" id="improveSkillsGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                 SECTION 4: CAREER GROWTH ROADMAP TIMELINE
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+            <div class="dash-card cr-timeline-card">
+                <div class="cr-card-header cr-purple-header" style="margin-bottom:28px">
+                    <div class="cr-card-icon cr-icon-purple"><i class="fas fa-route"></i></div>
+                    <div>
+                        <h3>Career Growth Roadmap</h3>
+                        <p>Your progression path from intern to architect</p>
+                    </div>
+                </div>
+                <div class="cr-timeline" id="careerTimeline">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                 SECTION 5: MARKET DEMAND CHART + CERTS
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+            <div class="cr-chart-cert-grid">
+
+                <!-- Market Demand Bar Chart -->
+                <div class="dash-card cr-chart-card">
+                    <div class="cr-card-header cr-blue-header" style="margin-bottom:20px">
+                        <div class="cr-card-icon cr-icon-blue"><i class="fas fa-chart-bar"></i></div>
+                        <div>
+                            <h3>Market Demand Chart</h3>
+                            <p>Role demand &amp; match percentage</p>
+                        </div>
+                    </div>
+                    <div class="cr-chart-wrapper">
+                        <canvas id="marketDemandChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recommended Certifications -->
+                <div class="dash-card cr-cert-card">
+                    <div class="cr-card-header cr-yellow-header" style="margin-bottom:20px">
+                        <div class="cr-card-icon cr-icon-yellow"><i class="fas fa-certificate"></i></div>
+                        <div>
+                            <h3>Recommended Certifications</h3>
+                            <p>Boost your profile &amp; market value</p>
+                        </div>
+                    </div>
+                    <div class="cr-cert-list" id="certificationsList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                 SECTION 6: AI CAREER ADVICE PANEL
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+            <div class="cr-ai-advice-panel" id="aiAdvicePanel">
+                <div class="cr-ai-glow"></div>
+                <div class="cr-ai-left">
+                    <div class="cr-ai-robot-wrap">
+                        <div class="cr-ai-robot-ring"></div>
+                        <div class="cr-ai-robot-icon"><i class="fas fa-robot"></i></div>
+                    </div>
+                    <span class="cr-ai-label">Groq AI</span>
+                </div>
+                <div class="cr-ai-content" id="aiAdviceText">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="cr-ai-readiness" id="aiReadinessBox">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                 SECTION 7: ACTION BUTTONS
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+            <div class="cr-action-row">
+                <a href="resume-score.html" class="cr-btn-back" id="btnBack">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+                <button class="cr-btn-download" id="btnDownload" onclick="downloadCareerReport()">
+                    <i class="fas fa-download"></i> Download Career Report
+                </button>
+                <a href="learning-roadmap.html" class="cr-btn-continue" id="btnContinue">
+                    Continue to Learning Roadmap <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </main>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <!-- Toast notification -->
+    <div class="cr-toast" id="crToast"><i class="fas fa-check-circle"></i> <span id="crToastMsg"></span></div>
+
+    <script src="auth.js"></script>
+    <script src="groq.js"></script>
+    <script src="header.js"></script>
+    <script src="job-roles-data.js"></script>
+    <script src="career-recommendations.js"></script>
+</body>
+</html>
+

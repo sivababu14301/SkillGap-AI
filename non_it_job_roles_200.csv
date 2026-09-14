@@ -1,0 +1,201 @@
+role_id,job_type,category,job_role
+1,NON-IT,Engineering & Manufacturing,Mechanical Engineer
+2,NON-IT,Engineering & Manufacturing,Civil Engineer
+3,NON-IT,Engineering & Manufacturing,Electrical Engineer
+4,NON-IT,Engineering & Manufacturing,Electronics Engineer
+5,NON-IT,Engineering & Manufacturing,Chemical Engineer
+6,NON-IT,Engineering & Manufacturing,Automobile Engineer
+7,NON-IT,Engineering & Manufacturing,Automotive Engineer
+8,NON-IT,Engineering & Manufacturing,Production Engineer
+9,NON-IT,Engineering & Manufacturing,Industrial Engineer
+10,NON-IT,Engineering & Manufacturing,Manufacturing Engineer
+11,NON-IT,Engineering & Manufacturing,Mechatronics Engineer
+12,NON-IT,Engineering & Manufacturing,Aerospace Engineer
+13,NON-IT,Engineering & Manufacturing,Aeronautical Engineer
+14,NON-IT,Engineering & Manufacturing,Biomedical Engineer
+15,NON-IT,Engineering & Manufacturing,Environmental Engineer
+16,NON-IT,Engineering & Manufacturing,Instrumentation Engineer
+17,NON-IT,Engineering & Manufacturing,Marine Engineer
+18,NON-IT,Engineering & Manufacturing,Petroleum Engineer
+19,NON-IT,Engineering & Manufacturing,Mining Engineer
+20,NON-IT,Engineering & Manufacturing,Metallurgical Engineer
+21,NON-IT,Engineering & Manufacturing,Process Engineer
+22,NON-IT,Engineering & Manufacturing,Quality Control Engineer
+23,NON-IT,Engineering & Manufacturing,Quality Assurance Engineer
+24,NON-IT,Engineering & Manufacturing,Maintenance Engineer
+25,NON-IT,Engineering & Manufacturing,Safety Engineer
+26,NON-IT,Engineering & Manufacturing,Design Engineer
+27,NON-IT,Engineering & Manufacturing,Project Engineer
+28,NON-IT,Engineering & Manufacturing,Site Engineer
+29,NON-IT,Engineering & Manufacturing,Manufacturing Manager
+30,NON-IT,Engineering & Manufacturing,Production Manager
+31,NON-IT,Construction & Architecture,Architect
+32,NON-IT,Construction & Architecture,Interior Designer
+33,NON-IT,Construction & Architecture,Interior Decorator
+34,NON-IT,Construction & Architecture,Structural Engineer
+35,NON-IT,Construction & Architecture,Construction Manager
+36,NON-IT,Construction & Architecture,Quantity Surveyor
+37,NON-IT,Construction & Architecture,Site Supervisor
+38,NON-IT,Construction & Architecture,Planning Engineer
+39,NON-IT,Construction & Architecture,Building Inspector
+40,NON-IT,Construction & Architecture,Land Surveyor
+41,NON-IT,Construction & Architecture,Civil Drafter
+42,NON-IT,Construction & Architecture,Structural Drafter
+43,NON-IT,Construction & Architecture,Project Manager
+44,NON-IT,Construction & Architecture,Urban Planner
+45,NON-IT,Construction & Architecture,Landscape Architect
+46,NON-IT,"Finance, Accounting & Banking",Accountant
+47,NON-IT,"Finance, Accounting & Banking",Senior Accountant
+48,NON-IT,"Finance, Accounting & Banking",Accounts Executive
+49,NON-IT,"Finance, Accounting & Banking",Financial Analyst
+50,NON-IT,"Finance, Accounting & Banking",Finance Manager
+51,NON-IT,"Finance, Accounting & Banking",Financial Advisor
+52,NON-IT,"Finance, Accounting & Banking",Investment Analyst
+53,NON-IT,"Finance, Accounting & Banking",Investment Banker
+54,NON-IT,"Finance, Accounting & Banking",Chartered Accountant
+55,NON-IT,"Finance, Accounting & Banking",Cost Accountant
+56,NON-IT,"Finance, Accounting & Banking",Management Accountant
+57,NON-IT,"Finance, Accounting & Banking",Tax Consultant
+58,NON-IT,"Finance, Accounting & Banking",Tax Accountant
+59,NON-IT,"Finance, Accounting & Banking",Auditor
+60,NON-IT,"Finance, Accounting & Banking",Internal Auditor
+61,NON-IT,"Finance, Accounting & Banking",Banking Officer
+62,NON-IT,"Finance, Accounting & Banking",Bank Manager
+63,NON-IT,"Finance, Accounting & Banking",Bank Clerk
+64,NON-IT,"Finance, Accounting & Banking",Relationship Manager
+65,NON-IT,"Finance, Accounting & Banking",Credit Analyst
+66,NON-IT,"Finance, Accounting & Banking",Credit Officer
+67,NON-IT,"Finance, Accounting & Banking",Loan Officer
+68,NON-IT,"Finance, Accounting & Banking",Insurance Advisor
+69,NON-IT,"Finance, Accounting & Banking",Insurance Agent
+70,NON-IT,"Finance, Accounting & Banking",Actuary
+71,NON-IT,"Marketing, Sales & Business",Marketing Executive
+72,NON-IT,"Marketing, Sales & Business",Marketing Manager
+73,NON-IT,"Marketing, Sales & Business",Digital Marketing Specialist
+74,NON-IT,"Marketing, Sales & Business",SEO Specialist
+75,NON-IT,"Marketing, Sales & Business",Social Media Manager
+76,NON-IT,"Marketing, Sales & Business",Content Writer
+77,NON-IT,"Marketing, Sales & Business",Copywriter
+78,NON-IT,"Marketing, Sales & Business",Brand Manager
+79,NON-IT,"Marketing, Sales & Business",Advertising Manager
+80,NON-IT,"Marketing, Sales & Business",Public Relations Specialist
+81,NON-IT,"Marketing, Sales & Business",Market Research Analyst
+82,NON-IT,"Marketing, Sales & Business",Sales Executive
+83,NON-IT,"Marketing, Sales & Business",Sales Representative
+84,NON-IT,"Marketing, Sales & Business",Sales Manager
+85,NON-IT,"Marketing, Sales & Business",Business Development Executive
+86,NON-IT,"Marketing, Sales & Business",Business Development Manager
+87,NON-IT,"Marketing, Sales & Business",Account Manager
+88,NON-IT,"Marketing, Sales & Business",Key Account Manager
+89,NON-IT,"Marketing, Sales & Business",Customer Relationship Manager
+90,NON-IT,"Marketing, Sales & Business",Customer Success Manager
+91,NON-IT,"Marketing, Sales & Business",Business Consultant
+92,NON-IT,"Marketing, Sales & Business",Management Consultant
+93,NON-IT,"Marketing, Sales & Business",Operations Executive
+94,NON-IT,"Marketing, Sales & Business",Operations Manager
+95,NON-IT,"Marketing, Sales & Business",Business Analyst
+96,NON-IT,HR & Administration,HR Executive
+97,NON-IT,HR & Administration,HR Manager
+98,NON-IT,HR & Administration,HR Generalist
+99,NON-IT,HR & Administration,HR Specialist
+100,NON-IT,HR & Administration,Recruiter
+101,NON-IT,HR & Administration,Talent Acquisition Specialist
+102,NON-IT,HR & Administration,Talent Management Specialist
+103,NON-IT,HR & Administration,Payroll Specialist
+104,NON-IT,HR & Administration,Training and Development Executive
+105,NON-IT,HR & Administration,Learning and Development Manager
+106,NON-IT,HR & Administration,Employee Relations Specialist
+107,NON-IT,HR & Administration,Administrative Executive
+108,NON-IT,HR & Administration,Administrative Assistant
+109,NON-IT,HR & Administration,Office Manager
+110,NON-IT,HR & Administration,Executive Assistant
+111,NON-IT,Law,Advocate
+112,NON-IT,Law,Lawyer
+113,NON-IT,Law,Corporate Lawyer
+114,NON-IT,Law,Criminal Lawyer
+115,NON-IT,Law,Civil Lawyer
+116,NON-IT,Law,Family Lawyer
+117,NON-IT,Law,Legal Advisor
+118,NON-IT,Law,Legal Consultant
+119,NON-IT,Law,Legal Assistant
+120,NON-IT,Law,Paralegal
+121,NON-IT,Law,Legal Researcher
+122,NON-IT,Law,Legal Secretary
+123,NON-IT,Law,Contract Specialist
+124,NON-IT,Law,Compliance Officer
+125,NON-IT,Law,Judge
+126,NON-IT,Healthcare & Medical,Doctor / Physician
+127,NON-IT,Healthcare & Medical,Staff Nurse
+128,NON-IT,Healthcare & Medical,Nurse
+129,NON-IT,Healthcare & Medical,Pharmacist
+130,NON-IT,Healthcare & Medical,Physiotherapist
+131,NON-IT,Healthcare & Medical,Occupational Therapist
+132,NON-IT,Healthcare & Medical,Psychologist
+133,NON-IT,Healthcare & Medical,Clinical Psychologist
+134,NON-IT,Healthcare & Medical,Dietitian
+135,NON-IT,Healthcare & Medical,Nutritionist
+136,NON-IT,Healthcare & Medical,Medical Assistant
+137,NON-IT,Healthcare & Medical,Medical Representative
+138,NON-IT,Healthcare & Medical,Medical Laboratory Technician
+139,NON-IT,Healthcare & Medical,Laboratory Technician
+140,NON-IT,Healthcare & Medical,Radiology Technician
+141,NON-IT,Healthcare & Medical,Dental Assistant
+142,NON-IT,Healthcare & Medical,Dental Hygienist
+143,NON-IT,Healthcare & Medical,Healthcare Administrator
+144,NON-IT,Healthcare & Medical,Medical Coder
+145,NON-IT,Healthcare & Medical,Medical Transcriptionist
+146,NON-IT,Healthcare & Medical,Clinical Research Associate
+147,NON-IT,Healthcare & Medical,Clinical Research Coordinator
+148,NON-IT,Healthcare & Medical,Public Health Officer
+149,NON-IT,Healthcare & Medical,Biomedical Scientist
+150,NON-IT,Healthcare & Medical,Speech Language Pathologist
+151,NON-IT,Healthcare & Medical,Optometrist
+152,NON-IT,Healthcare & Medical,Audiologist
+153,NON-IT,Healthcare & Medical,Emergency Medical Technician
+154,NON-IT,Healthcare & Medical,Occupational Health Officer
+155,NON-IT,Healthcare & Medical,Hospital Administrator
+156,NON-IT,Agriculture & Food,Agricultural Officer
+157,NON-IT,Agriculture & Food,Agronomist
+158,NON-IT,Agriculture & Food,Agricultural Engineer
+159,NON-IT,Agriculture & Food,Agricultural Consultant
+160,NON-IT,Agriculture & Food,Agricultural Scientist
+161,NON-IT,Agriculture & Food,Farm Manager
+162,NON-IT,Agriculture & Food,Horticulture Officer
+163,NON-IT,Agriculture & Food,Soil Scientist
+164,NON-IT,Agriculture & Food,Plant Pathologist
+165,NON-IT,Agriculture & Food,Agricultural Extension Officer
+166,NON-IT,Agriculture & Food,Food Technologist
+167,NON-IT,Agriculture & Food,Food Scientist
+168,NON-IT,Agriculture & Food,Dairy Technologist
+169,NON-IT,Agriculture & Food,Fisheries Officer
+170,NON-IT,Agriculture & Food,Forestry Officer
+171,NON-IT,Science & Biotechnology,Research Scientist
+172,NON-IT,Science & Biotechnology,Research Associate
+173,NON-IT,Science & Biotechnology,Laboratory Assistant
+174,NON-IT,Science & Biotechnology,Chemist
+175,NON-IT,Science & Biotechnology,Physicist
+176,NON-IT,Science & Biotechnology,Biologist
+177,NON-IT,Science & Biotechnology,Microbiologist
+178,NON-IT,Science & Biotechnology,Biochemist
+179,NON-IT,Science & Biotechnology,Geneticist
+180,NON-IT,Science & Biotechnology,Geologist
+181,NON-IT,Science & Biotechnology,Environmental Scientist
+182,NON-IT,Science & Biotechnology,Biotechnologist
+183,NON-IT,Science & Biotechnology,Molecular Biologist
+184,NON-IT,Science & Biotechnology,Bioinformatics Scientist
+185,NON-IT,Science & Biotechnology,Clinical Research Scientist
+186,NON-IT,Education,School Teacher
+187,NON-IT,Education,Primary School Teacher
+188,NON-IT,Education,Secondary School Teacher
+189,NON-IT,Education,Mathematics Teacher
+190,NON-IT,Education,Science Teacher
+191,NON-IT,Education,English Teacher
+192,NON-IT,Education,College Lecturer
+193,NON-IT,Education,Professor
+194,NON-IT,Education,Academic Coordinator
+195,NON-IT,Education,Education Counselor
+196,NON-IT,Education,Special Education Teacher
+197,NON-IT,Education,School Principal
+198,NON-IT,Education,Physical Education Teacher
+199,NON-IT,Education,Curriculum Developer
+200,NON-IT,Education,Training Instructor

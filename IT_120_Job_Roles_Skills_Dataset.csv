@@ -1,0 +1,121 @@
+job_role,required_skills,skill_count
+Software Developer,"Programming, OOP, Data Structures, Algorithms, Git, SQL, Debugging, Testing",8
+Software Engineer,"Programming, OOP, Data Structures, Algorithms, Git, Software Design, Testing, Debugging",8
+Full Stack Developer,"HTML, CSS, JavaScript, React, Node.js, REST API, SQL, Git",8
+Frontend Developer,"HTML, CSS, JavaScript, Responsive Design, React, Git, REST API, Testing",8
+Backend Developer,"Java, Python, Node.js, REST API, SQL, Databases, Git, Authentication",8
+Web Developer,"HTML, CSS, JavaScript, Responsive Design, REST API, Git, SEO, Web Security",8
+Mobile App Developer,"Mobile Development, Java, Kotlin, Swift, REST API, Git, UI Design, Testing",8
+Android Developer,"Kotlin, Java, Android SDK, Android Studio, REST API, SQLite, Git, Material Design",8
+iOS Developer,"Swift, SwiftUI, iOS SDK, Xcode, REST API, Core Data, Git, UI Design",8
+Java Developer,"Java, OOP, Collections, JDBC, SQL, Spring Boot, REST API, Git",8
+Python Developer,"Python, OOP, Data Structures, SQL, REST API, Git, Testing, Debugging",8
+.NET Developer,"C#, .NET, ASP.NET, Entity Framework, SQL Server, REST API, Git, OOP",8
+PHP Developer,"PHP, HTML, CSS, JavaScript, MySQL, Laravel, REST API, Git",8
+React Developer,"JavaScript, React, JSX, HTML, CSS, Redux, REST API, Git",8
+Angular Developer,"TypeScript, Angular, HTML, CSS, RxJS, REST API, Git, Testing",8
+Node.js Developer,"JavaScript, Node.js, Express.js, REST API, MongoDB, SQL, Git, Authentication",8
+Flutter Developer,"Dart, Flutter, Mobile UI, REST API, Firebase, State Management, Git, Testing",8
+Embedded Software Developer,"C, C++, Microcontrollers, Embedded Systems, RTOS, Debugging, Git, Electronics",8
+AI Engineer,"Python, Machine Learning, Deep Learning, NLP, APIs, TensorFlow, PyTorch, Git",8
+Machine Learning Engineer,"Python, Machine Learning, Statistics, Data Preprocessing, Scikit-learn, TensorFlow, Model Evaluation, Git",8
+Deep Learning Engineer,"Python, Neural Networks, Deep Learning, PyTorch, TensorFlow, CNN, RNN, GPU Computing",8
+NLP Engineer,"Python, NLP, Transformers, Machine Learning, Deep Learning, NLTK, spaCy, Hugging Face",8
+Computer Vision Engineer,"Python, OpenCV, Deep Learning, CNN, Image Processing, PyTorch, TensorFlow, Computer Vision",8
+Data Scientist,"Python, SQL, Statistics, Machine Learning, Pandas, NumPy, Scikit-learn, Data Visualization",8
+Data Analyst,"SQL, Excel, Python, Statistics, Pandas, Data Visualization, Power BI, Tableau",8
+Data Engineer,"Python, SQL, ETL, Data Warehousing, Apache Spark, Airflow, Cloud, Git",8
+Data Architect,"Data Modeling, SQL, Data Warehousing, Cloud, Database Design, ETL, Big Data, Security",8
+AI Research Scientist,"Python, Machine Learning, Deep Learning, Mathematics, Statistics, Research Methods, PyTorch, Scientific Computing",8
+Generative AI Engineer,"Python, LLMs, Prompt Engineering, RAG, Transformers, Vector Databases, APIs, Git",8
+Prompt Engineer,"Prompt Engineering, LLMs, NLP, Python, Evaluation, AI Safety, API Integration, Documentation",8
+MLOps Engineer,"Python, Machine Learning, Docker, Kubernetes, CI/CD, MLflow, Cloud, Git",8
+Business Intelligence Developer,"SQL, Data Modeling, ETL, Power BI, Tableau, DAX, Data Warehousing, Excel",8
+BI Analyst,"SQL, Excel, Power BI, Tableau, Statistics, Data Visualization, DAX, Reporting",8
+Cloud Engineer,"Cloud Computing, Linux, Networking, AWS, Azure, Terraform, Docker, Git",8
+Cloud Architect,"Cloud Architecture, AWS, Azure, Networking, Security, Terraform, Kubernetes, Cost Optimization",8
+AWS Cloud Engineer,"AWS, EC2, S3, IAM, VPC, CloudWatch, Terraform, Linux",8
+Azure Cloud Engineer,"Azure, Virtual Machines, Azure Storage, Azure AD, Networking, Terraform, PowerShell, Linux",8
+Google Cloud Engineer,"Google Cloud, Compute Engine, Cloud Storage, IAM, VPC, Kubernetes, Terraform, Linux",8
+DevOps Engineer,"Linux, Git, Docker, Kubernetes, CI/CD, Jenkins, Terraform, Cloud",8
+Site Reliability Engineer (SRE),"Linux, Python, Kubernetes, Docker, Monitoring, Observability, CI/CD, Cloud",8
+Platform Engineer,"Linux, Kubernetes, Docker, Terraform, CI/CD, Cloud, Networking, Git",8
+Infrastructure Engineer,"Linux, Networking, Virtualization, Cloud, Docker, Terraform, Monitoring, Security",8
+Release Engineer,"Git, CI/CD, Jenkins, Docker, Kubernetes, Release Management, Automation, Linux",8
+Kubernetes Engineer,"Kubernetes, Docker, Linux, Helm, Networking, Terraform, CI/CD, Monitoring",8
+Cybersecurity Analyst,"Networking, Linux, Cybersecurity, SIEM, Incident Response, Threat Analysis, Security Tools, Risk Assessment",8
+Cybersecurity Engineer,"Network Security, Linux, Python, Firewalls, SIEM, Cloud Security, Cryptography, Incident Response",8
+Security Engineer,"Network Security, Firewalls, Linux, SIEM, Vulnerability Management, IAM, Cryptography, Cloud Security",8
+Information Security Analyst,"Information Security, Risk Management, Security Policies, SIEM, Incident Response, Auditing, Networking, IAM",8
+SOC Analyst,"SIEM, Network Security, Log Analysis, Incident Response, Threat Intelligence, Linux, Windows Security, Malware Analysis",8
+Ethical Hacker,"Penetration Testing, Networking, Linux, Web Security, OWASP, Python, Vulnerability Assessment, Kali Linux",8
+Penetration Tester,"Penetration Testing, Network Security, Web Security, OWASP, Linux, Python, Vulnerability Scanning, Reporting",8
+Security Consultant,"Cybersecurity, Risk Assessment, Security Architecture, Compliance, IAM, Cloud Security, Auditing, Communication",8
+Cloud Security Engineer,"Cloud Security, AWS, Azure, IAM, Networking, Linux, Terraform, SIEM",8
+Application Security Engineer,"Application Security, OWASP, Secure Coding, SAST, DAST, Threat Modeling, API Security, DevSecOps",8
+Security Architect,"Security Architecture, Network Security, Cloud Security, IAM, Cryptography, Risk Management, Zero Trust, Compliance",8
+Digital Forensics Analyst,"Digital Forensics, Linux, Windows, Network Forensics, Evidence Handling, Malware Analysis, Disk Analysis, Incident Response",8
+Database Administrator (DBA),"SQL, Database Administration, MySQL, PostgreSQL, Backup, Recovery, Performance Tuning, Security",8
+Database Developer,"SQL, Database Design, Stored Procedures, PostgreSQL, MySQL, Data Modeling, Query Optimization, Git",8
+SQL Developer,"SQL, T-SQL, PL/SQL, Database Design, Stored Procedures, Query Optimization, ETL, Data Modeling",8
+Database Engineer,"SQL, Database Architecture, PostgreSQL, MySQL, Performance Tuning, Backup, Cloud Databases, Automation",8
+Data Warehouse Engineer,"SQL, ETL, Data Warehousing, Data Modeling, Apache Spark, Cloud, Python, BI Tools",8
+Database Architect,"Database Architecture, Data Modeling, SQL, Distributed Databases, Cloud, Security, Performance Tuning, High Availability",8
+Network Engineer,"Networking, TCP/IP, Routing, Switching, Cisco, VLAN, VPN, Network Security",8
+Network Administrator,"Networking, TCP/IP, Routing, Switching, DNS, DHCP, Linux, Troubleshooting",8
+Network Architect,"Network Architecture, Routing, Switching, TCP/IP, Cloud Networking, Security, SD-WAN, Network Design",8
+System Administrator,"Linux, Windows Server, Networking, Active Directory, PowerShell, Bash, Virtualization, Backup",8
+Systems Engineer,"Linux, Windows Server, Networking, Virtualization, Cloud, Automation, PowerShell, Troubleshooting",8
+IT Infrastructure Engineer,"Networking, Linux, Windows Server, Virtualization, Cloud, Storage, Backup, Security",8
+Network Security Engineer,"Network Security, Firewalls, VPN, IDS/IPS, TCP/IP, SIEM, Cisco, Threat Detection",8
+UI Designer,"UI Design, Figma, Typography, Color Theory, Layout, Design Systems, Prototyping, Responsive Design",8
+UX Designer,"UX Design, User Research, Wireframing, Prototyping, Figma, Usability Testing, Information Architecture, Accessibility",8
+UI/UX Designer,"UI Design, UX Design, Figma, Wireframing, Prototyping, User Research, Usability Testing, Design Systems",8
+Product Designer,"UI Design, UX Research, Figma, Prototyping, Design Systems, User Testing, Product Thinking, Accessibility",8
+UX Researcher,"User Research, Interviews, Surveys, Usability Testing, Data Analysis, Personas, Journey Mapping, UX Methods",8
+Interaction Designer,"Interaction Design, UX Design, Wireframing, Prototyping, Figma, Usability Testing, Design Systems, Accessibility",8
+Graphic Designer,"Graphic Design, Photoshop, Illustrator, Typography, Color Theory, Branding, Layout, Visual Design",8
+Web Designer,"HTML, CSS, UI Design, Responsive Design, Figma, JavaScript, Typography, Web Accessibility",8
+Product Manager,"Product Strategy, Market Research, Agile, Roadmapping, User Stories, Analytics, Stakeholder Management, Communication",8
+Technical Product Manager,"Product Management, Software Development, APIs, Agile, Roadmapping, System Design, Analytics, Stakeholder Management",8
+QA Engineer,"Software Testing, Test Cases, Manual Testing, Automation Testing, SQL, API Testing, Bug Tracking, Git",8
+Software Tester,"Manual Testing, Test Cases, Regression Testing, Functional Testing, SQL, Bug Reporting, API Testing, SDLC",8
+Automation Tester,"Selenium, Java, Python, Automation Testing, TestNG, API Testing, Git, CI/CD",8
+Manual Tester,"Manual Testing, Test Cases, Functional Testing, Regression Testing, Exploratory Testing, SQL, Bug Tracking, SDLC",8
+Test Engineer,"Software Testing, Test Automation, Test Design, API Testing, SQL, Performance Testing, Git, CI/CD",8
+Performance Tester,"Performance Testing, JMeter, Load Testing, Stress Testing, SQL, Monitoring, Test Automation, Performance Analysis",8
+QA Automation Engineer,"Selenium, Java, Python, Test Automation, API Testing, CI/CD, Git, Test Frameworks",8
+SDET,"Java, Python, Selenium, Test Automation, API Testing, CI/CD, Git, Software Development",8
+Security Tester,"Web Security, OWASP, Penetration Testing, Vulnerability Assessment, API Security, Linux, Burp Suite, Reporting",8
+IT Project Manager,"Project Management, Agile, Scrum, Risk Management, Jira, Scheduling, Budgeting, Stakeholder Management",8
+IT Manager,"IT Management, Project Management, IT Operations, Budgeting, Cybersecurity, Cloud, Leadership, Strategic Planning",8
+Technical Project Manager,"Project Management, Agile, Scrum, SDLC, Jira, Risk Management, Technical Leadership, Communication",8
+Program Manager,"Program Management, Project Management, Risk Management, Budgeting, Agile, Stakeholder Management, Leadership, Strategy",8
+Scrum Master,"Scrum, Agile, Sprint Planning, Facilitation, Jira, Team Management, Conflict Resolution, Servant Leadership",8
+Agile Coach,"Agile, Scrum, Kanban, Coaching, Facilitation, Agile Metrics, Change Management, Leadership",8
+Business Analyst,"Requirements Analysis, SQL, Excel, UML, Business Process Modeling, Agile, Documentation, Communication",8
+Technical Business Analyst,"Requirements Analysis, SQL, APIs, UML, System Analysis, Agile, SDLC, Documentation",8
+Systems Analyst,"Systems Analysis, Requirements Engineering, UML, SQL, SDLC, System Design, Testing, Documentation",8
+IT Consultant,"IT Strategy, Business Analysis, Cloud, Cybersecurity, Project Management, Solution Design, Communication, Consulting",8
+Solutions Architect,"System Design, Cloud, APIs, Microservices, Databases, Security, Architecture Patterns, Communication",8
+Enterprise Architect,"Enterprise Architecture, Cloud Architecture, System Integration, IT Strategy, Security, TOGAF, Data Architecture, Governance",8
+IT Support Engineer,"Windows, Linux, Networking, Hardware Troubleshooting, Active Directory, IT Support, Ticketing Systems, Remote Support",8
+Technical Support Engineer,"Networking, Linux, Windows, Troubleshooting, SQL, APIs, Ticketing Systems, Customer Support",8
+Help Desk Technician,"Windows, Hardware, Networking, Troubleshooting, Active Directory, Ticketing Systems, Customer Service, IT Support",8
+Desktop Support Engineer,"Windows, Hardware, Networking, Active Directory, Troubleshooting, Office 365, Imaging, IT Support",8
+System Support Engineer,"Linux, Windows Server, Networking, Monitoring, Troubleshooting, Scripting, Databases, IT Support",8
+Application Support Engineer,"SQL, Application Troubleshooting, Linux, APIs, Monitoring, Incident Management, Ticketing Systems, Scripting",8
+IT Service Manager,"ITIL, Service Management, Incident Management, Problem Management, Change Management, SLA, Leadership, Reporting",8
+IT Operations Engineer,"Linux, Windows Server, Networking, Monitoring, Automation, Cloud, Incident Management, Scripting",8
+Blockchain Developer,"Blockchain, Solidity, Ethereum, Smart Contracts, JavaScript, Cryptography, Web3, Git",8
+Web3 Developer,"Blockchain, Solidity, Ethereum, JavaScript, Smart Contracts, Web3.js, Cryptography, Git",8
+IoT Engineer,"IoT, Embedded Systems, C, Python, MQTT, Sensors, Networking, Cloud",8
+Robotics Engineer,"Robotics, Python, C++, ROS, Sensors, Computer Vision, Control Systems, Embedded Systems",8
+AR/VR Developer,"Unity, C#, 3D Development, AR, VR, Computer Graphics, Blender, Game Engines",8
+Game Developer,"C#, C++, Unity, Unreal Engine, Game Physics, 3D Graphics, Git, Game Design",8
+Salesforce Developer,"Salesforce, Apex, Lightning, SOQL, JavaScript, REST API, CRM, Git",8
+SAP Consultant,"SAP, ERP, Business Process, ABAP, SAP Fiori, Database, Integration, Requirements Analysis",8
+RPA Developer,"RPA, UiPath, Automation Anywhere, Python, Process Automation, SQL, APIs, Workflow Design",8
+Automation Engineer,"Python, Selenium, Automation, APIs, CI/CD, Git, Testing, Scripting",8
+Solutions Engineer,"Technical Sales, APIs, Cloud, Software Architecture, SQL, Product Demonstration, Troubleshooting, Communication",8
+Technical Writer,"Technical Writing, Documentation, Markdown, API Documentation, Research, Editing, Git, Communication",8

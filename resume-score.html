@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Score â€“ SkillGap AI</title>
+    <meta name="description" content="AI-powered resume scoring with ATS compatibility check and improvement suggestions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="resume-score.css">
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span class="logo-icon"><i class="fas fa-robot"></i></span>
+                <span class="logo-text">SkillGap <span class="logo-ai">AI</span></span>
+            </div>
+            <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">Main Menu</div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="dashboard.html" class="nav-link"><span class="nav-icon"><i class="fas fa-th-large"></i></span><span class="nav-text">Dashboard</span></a></li>
+                <li class="nav-item"><a href="upload-resume.html" class="nav-link"><span class="nav-icon"><i class="fas fa-file-upload"></i></span><span class="nav-text">Upload Resume</span></a></li>
+                <li class="nav-item"><a href="job-role.html" class="nav-link"><span class="nav-icon"><i class="fas fa-briefcase"></i></span><span class="nav-text">Job Role Selection</span></a></li>
+                <li class="nav-item"><a href="skills-gap.html" class="nav-link"><span class="nav-icon"><i class="fas fa-chart-pie"></i></span><span class="nav-text">Skills Gap Analysis</span></a></li>
+                <li class="nav-item active"><a href="resume-score.html" class="nav-link"><span class="nav-icon"><i class="fas fa-star"></i></span><span class="nav-text">Resume Score</span></a></li>
+                <li class="nav-item"><a href="career-recommendations.html" class="nav-link"><span class="nav-icon"><i class="fas fa-rocket"></i></span><span class="nav-text">Career Recommendations</span></a></li>
+                <li class="nav-item"><a href="learning-roadmap.html" class="nav-link"><span class="nav-icon"><i class="fas fa-road"></i></span><span class="nav-text">Learning Roadmap</span></a></li>
+                <li class="nav-item"><a href="reports.html" class="nav-link"><span class="nav-icon"><i class="fas fa-file-alt"></i></span><span class="nav-text">Reports</span></a></li>
+            </ul>
+            <div class="nav-section-label">Account</div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="profile.html" class="nav-link"><span class="nav-icon"><i class="fas fa-user-circle"></i></span><span class="nav-text">Profile</span></a></li>
+                <li class="nav-item logout-item"><a href="#" class="nav-link" onclick="logout()"><span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span><span class="nav-text">Logout</span></a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-mini-card">
+                <div class="user-avatar-sm" id="sidebarAvatar">U</div>
+                <div class="user-mini-info">
+                    <span class="user-mini-name" id="sidebarName">User</span>
+                    <span class="user-mini-role">Student</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN WRAPPER ===== -->
+    <div class="main-wrapper" id="mainWrapper">
+
+        <header class="top-header">
+            <div class="header-left">
+                <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+                <a href="dashboard.html" class="mobile-nav-logo" id="mobileLogo" style="display:none;">
+                    <span class="logo-icon"><i class="fas fa-robot"></i></span>
+                    <span class="logo-text">SkillGap <span class="logo-ai">AI</span></span>
+                </a>
+                <div class="page-breadcrumb">
+                    <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Resume Score</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn notif-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+                <div class="header-profile" id="headerProfile">
+                    <div class="profile-avatar" id="headerAvatar">U</div>
+                    <span class="profile-name" id="headerName">User</span>
+                    <i class="fas fa-chevron-down profile-arrow"></i>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-content">
+
+            <!-- Page Header -->
+            <div class="rs-page-header">
+                <div>
+                    <h1 class="rs-title"><i class="fas fa-star"></i> Resume Score</h1>
+                    <p class="rs-subtitle">Overall resume evaluation &amp; ATS compatibility check.</p>
+                </div>
+                <!-- Step Stepper -->
+                <div class="step-indicator">
+                    <div class="step-dot done"><span><i class="fas fa-check"></i></span><small>Upload</small></div>
+                    <div class="step-line done-line"></div>
+                    <div class="step-dot done"><span><i class="fas fa-check"></i></span><small>Job Role</small></div>
+                    <div class="step-line done-line"></div>
+                    <div class="step-dot done"><span><i class="fas fa-check"></i></span><small>Analysis</small></div>
+                    <div class="step-line active"></div>
+                    <div class="step-dot active"><span>4</span><small>Score</small></div>
+                </div>
+            </div>
+
+            <!-- Row 1: Score Circle + Breakdown + ATS -->
+            <div class="rs-top-grid">
+
+                <!-- Score Circle Card -->
+                <div class="dash-card score-circle-card">
+                    <div class="score-ring-wrap">
+                        <canvas id="scoreDonut" width="200" height="200"></canvas>
+                        <div class="score-ring-center">
+                            <span class="score-big" id="scoreDisplay">84</span>
+                            <span class="score-outof">/100</span>
+                        </div>
+                    </div>
+                    <div class="score-label-wrap">
+                        <p class="score-grade" id="scoreGrade">Excellent</p>
+                        <div class="score-stars" id="scoreStars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Score Breakdown Card -->
+                <div class="dash-card breakdown-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-sliders-h"></i> Score Breakdown</h3>
+                    </div>
+                    <div class="breakdown-list" id="breakdownList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- ATS Compatibility Card -->
+                <div class="dash-card ats-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-robot"></i> ATS Compatibility</h3>
+                    </div>
+                    <div class="ats-score-highlight">
+                        <div class="ats-big-val" id="atsScore">88%</div>
+                        <p>ATS Compatibility Score</p>
+                    </div>
+                    <div class="ats-metrics" id="atsMetrics">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Row 2: Strengths + Weaknesses + Suggestions -->
+            <div class="rs-mid-grid">
+
+                <!-- Strengths -->
+                <div class="dash-card sw-card strengths-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-thumbs-up"></i> Strengths</h3>
+                    </div>
+                    <ul class="sw-list" id="strengthsList"></ul>
+                </div>
+
+                <!-- Weaknesses -->
+                <div class="dash-card sw-card weaknesses-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-thumbs-down"></i> Weaknesses</h3>
+                    </div>
+                    <ul class="sw-list" id="weaknessesList"></ul>
+                </div>
+
+                <!-- Improvement Suggestions -->
+                <div class="dash-card suggestions-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-lightbulb"></i> Improvement Suggestions</h3>
+                    </div>
+                    <ul class="suggestions-list" id="suggestionsList"></ul>
+                </div>
+
+            </div>
+
+            <!-- Row 3: Donut Chart + Radar Chart -->
+            <div class="rs-chart-grid">
+
+                <div class="dash-card chart-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> Resume Components</h3>
+                    </div>
+                    <div class="chart-wrap">
+                        <div class="canvas-container">
+                            <canvas id="componentsDonut"></canvas>
+                        </div>
+                        <div class="comp-legend" id="compLegend"></div>
+                    </div>
+                </div>
+
+                <div class="dash-card chart-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-spider"></i> Resume Quality Radar</h3>
+                    </div>
+                    <div class="chart-wrap radar-wrap">
+                        <div class="canvas-container radar-container">
+                            <canvas id="radarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="rs-action-bar">
+                <a href="skills-gap.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back</a>
+                <button class="btn-download" onclick="downloadReport()"><i class="fas fa-download"></i> Download Resume Report</button>
+                <a href="career-recommendations.html" class="btn-continue">
+                    Continue to Career Recommendations <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </main>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <script src="auth.js"></script>
+    <script src="groq.js"></script>
+    <script src="header.js"></script>
+    <script src="resume-score.js"></script>
+</body>
+</html>
+

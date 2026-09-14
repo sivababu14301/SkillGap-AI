@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile â€“ SkillGap AI</title>
+    <meta name="description" content="Manage your SkillGap AI profile, resume, and career track statistics.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span class="logo-icon"><i class="fas fa-robot"></i></span>
+                <span class="logo-text">SkillGap <span class="logo-ai">AI</span></span>
+            </div>
+            <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">Main Menu</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-th-large"></i></span>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="upload-resume.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-file-upload"></i></span>
+                        <span class="nav-text">Upload Resume</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="job-role.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-briefcase"></i></span>
+                        <span class="nav-text">Job Role Selection</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="skills-gap.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-chart-pie"></i></span>
+                        <span class="nav-text">Skills Gap Analysis</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="resume-score.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-star"></i></span>
+                        <span class="nav-text">Resume Score</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="career-recommendations.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-rocket"></i></span>
+                        <span class="nav-text">Career Recommendations</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="learning-roadmap.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-road"></i></span>
+                        <span class="nav-text">Learning Roadmap</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
+                        <span class="nav-text">Reports</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-section-label">Account</div>
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a href="profile.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-user-circle"></i></span>
+                        <span class="nav-text">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item logout-item">
+                    <a href="#" class="nav-link" onclick="logout()">
+                        <span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span>
+                        <span class="nav-text">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-mini-card">
+                <div class="user-avatar-sm" id="sidebarAvatar">U</div>
+                <div class="user-mini-info">
+                    <span class="user-mini-name" id="sidebarName">User</span>
+                    <span class="user-mini-role">Student</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN WRAPPER ===== -->
+    <div class="main-wrapper" id="mainWrapper">
+
+        <!-- TOP HEADER -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+                <a href="dashboard.html" class="mobile-nav-logo" id="mobileLogo" style="display:none;">
+                    <span class="logo-icon"><i class="fas fa-robot"></i></span>
+                    <span class="logo-text">SkillGap <span class="logo-ai">AI</span></span>
+                </a>
+                <div class="page-breadcrumb">
+                    <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Profile</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn notif-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+                <div class="header-profile" id="headerProfile">
+                    <div class="profile-avatar" id="headerAvatar">U</div>
+                    <span class="profile-name" id="headerName">User</span>
+                    <i class="fas fa-chevron-down profile-arrow"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- PAGE CONTENT -->
+        <main class="dashboard-content">
+
+            <!-- Page Header -->
+            <div class="page-header-row">
+                <div>
+                    <h1 class="page-title"><i class="fas fa-user-circle"></i> <span id="dynamicPageTitle">User Profile</span></h1>
+                    <p class="page-subtitle">Manage your personal information, track career stats, and inspect achievements.</p>
+                </div>
+            </div>
+
+            <!-- Profile Dashboard Layout -->
+            <div class="profile-layout">
+                
+                <!-- Left Column: User Profile Card & Badges & Timeline -->
+                <div class="profile-left-col">
+                    
+                    <!-- 1. User Profile Card -->
+                    <div class="dash-card user-profile-card">
+                        <div class="profile-cover"></div>
+                        <div class="profile-avatar-wrapper">
+                            <div class="profile-avatar-lg" id="profileAvatar">U</div>
+                            <label class="avatar-upload-btn" title="Upload Avatar">
+                                <i class="fas fa-camera"></i>
+                                <input type="file" id="avatarFileInput" accept="image/*" style="display: none;">
+                            </label>
+                        </div>
+                        <div class="profile-details">
+                            <h2 id="profileName">User</h2>
+                            <p class="profile-headline" id="profileHeadline">Target Role: <span class="target-highlight" id="profileTargetRole">Python Developer</span></p>
+                            <p class="profile-location"><i class="fas fa-map-marker-alt"></i> Bengaluru, India</p>
+                            <p class="profile-bio" id="profileBio">Passionate learner aiming to bridge skills gaps and secure a robust career in Software Development.</p>
+                            
+                            <div class="profile-meta-grid">
+                                <div class="meta-item">
+                                    <span class="meta-label">User ID</span>
+                                    <span class="meta-val" id="profileUserId" style="font-family:monospace;font-weight:700;color:#A78BFA">USR001</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Email</span>
+                                    <span class="meta-val" id="profileEmail">user@example.com</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Phone</span>
+                                    <span class="meta-val" id="profilePhone">+91 98765 43210</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Education</span>
+                                    <span class="meta-val" id="profileEducation">Not Set</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">College</span>
+                                    <span class="meta-val" id="profileCollege">Not Set</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Grad Year</span>
+                                    <span class="meta-val" id="profileGradYear">Not Set</span>
+                                </div>
+                                <div class="meta-item" style="grid-column: span 1.5;">
+                                    <span class="meta-label">LinkedIn</span>
+                                    <span class="meta-val" id="profileLinkedin" style="word-break: break-all;">Not Set</span>
+                                </div>
+                                <div class="meta-item" style="grid-column: span 1.5;">
+                                    <span class="meta-label">GitHub</span>
+                                    <span class="meta-val" id="profileGithub" style="word-break: break-all;">Not Set</span>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-actions-row">
+                                <button class="btn btn-outline" id="editProfileBtn" onclick="openEditProfileModal()"><i class="fas fa-edit"></i> Edit Profile</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8. Achievement Badges -->
+                    <div class="dash-card achievements-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-award"></i> Achievement Badges</h3>
+                        </div>
+                        <div class="badges-grid" id="badgesGrid">
+                            <div class="badge-item locked" title="Get ATS Score above 80" id="badgeATS">
+                                <div class="badge-icon"><i class="fas fa-robot"></i></div>
+                                <span>ATS Expert</span>
+                            </div>
+                            <div class="badge-item locked" title="Select a target job role" id="badgeRole">
+                                <div class="badge-icon"><i class="fas fa-briefcase"></i></div>
+                                <span>Target Set</span>
+                            </div>
+                            <div class="badge-item locked" title="First resume upload" id="badgeUpload">
+                                <div class="badge-icon"><i class="fas fa-file-upload"></i></div>
+                                <span>First Step</span>
+                            </div>
+                            <div class="badge-item locked" title="Check your learning roadmap" id="badgeRoadmap">
+                                <div class="badge-icon"><i class="fas fa-road"></i></div>
+                                <span>Planner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. Activity History Timeline -->
+                    <div class="dash-card timeline-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-clock-rotate-left"></i> Activity History</h3>
+                        </div>
+                        <div class="timeline" id="activityTimeline">
+                            <!-- Populated by JS -->
+                            <div class="timeline-item">
+                                <div class="timeline-badge"><i class="fas fa-user-plus"></i></div>
+                                <div class="timeline-content">
+                                    <h4>Account Created</h4>
+                                    <p>Welcome to SkillGap AI!</p>
+                                    <span class="timeline-time">Just now</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Settings & Stats & Progress -->
+                <div class="profile-right-col">
+                    
+                    <!-- 2. Career Statistics Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-box-card border-purple">
+                            <div class="stat-box-icon purple"><i class="fas fa-star"></i></div>
+                            <div class="stat-box-info">
+                                <span class="val" id="statResumeScore">0</span>
+                                <span class="lbl">Resume Score</span>
+                            </div>
+                        </div>
+                        <div class="stat-box-card border-blue">
+                            <div class="stat-box-icon blue"><i class="fas fa-robot"></i></div>
+                            <div class="stat-box-info">
+                                <span class="val" id="statATSScore">0%</span>
+                                <span class="lbl">ATS Compliance</span>
+                            </div>
+                        </div>
+                        <div class="stat-box-card border-green">
+                            <div class="stat-box-icon green"><i class="fas fa-chart-pie"></i></div>
+                            <div class="stat-box-info">
+                                <span class="val" id="statSkillMatch">0%</span>
+                                <span class="lbl">Skill Match %</span>
+                            </div>
+                        </div>
+                        <div class="stat-box-card border-orange">
+                            <div class="stat-box-icon orange"><i class="fas fa-gauge-high"></i></div>
+                            <div class="stat-box-info">
+                                <span class="val" id="statReadiness">0%</span>
+                                <span class="lbl">Readiness Index</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 & 4. Skills & Learning Dashboard -->
+                    <div class="grid-two-row">
+                        
+                        <!-- Skills Progress Bars -->
+                        <div class="dash-card card-half">
+                            <div class="card-header">
+                                <h3><i class="fas fa-sliders"></i> Skill Distribution</h3>
+                            </div>
+                            <div class="skills-bar-list" id="skillsProgressList">
+                                <div class="progress-bar-item">
+                                    <div class="pb-info">
+                                        <span>Technical Skills</span>
+                                        <span class="val">80%</span>
+                                    </div>
+                                    <div class="pb-track"><div class="pb-fill" style="width: 80%; background: linear-gradient(to right, #7C3AED, #A78BFA);"></div></div>
+                                </div>
+                                <div class="progress-bar-item">
+                                    <div class="pb-info">
+                                        <span>Soft Skills</span>
+                                        <span class="val">65%</span>
+                                    </div>
+                                    <div class="pb-track"><div class="pb-fill" style="width: 65%; background: linear-gradient(to right, #3B82F6, #60A5FA);"></div></div>
+                                </div>
+                                <div class="progress-bar-item">
+                                    <div class="pb-info">
+                                        <span>Tools & Platforms</span>
+                                        <span class="val">50%</span>
+                                    </div>
+                                    <div class="pb-track"><div class="pb-fill" style="width: 50%; background: linear-gradient(to right, #10B981, #34D399);"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Learning Progress -->
+                        <div class="dash-card card-half">
+                            <div class="card-header">
+                                <h3><i class="fas fa-graduation-cap"></i> Learning Roadmap Track</h3>
+                            </div>
+                            <div class="learning-track-list" id="learningTrackList">
+                                <div class="progress-bar-item">
+                                    <div class="pb-info">
+                                        <span>Phase 1: Core Foundations</span>
+                                        <span class="val">100%</span>
+                                    </div>
+                                    <div class="pb-track"><div class="pb-fill complete" style="width: 100%;"></div></div>
+                                </div>
+                                <div class="progress-bar-item">
+                                    <div class="pb-info">
+                                        <span>Phase 2: Framework Mastery</span>
+                                        <span class="val">40%</span>
+                                    </div>
+                                    <div class="pb-track"><div class="pb-fill" style="width: 40%; background: linear-gradient(to right, #3B82F6, #60A5FA);"></div></div>
+                                </div>
+                                <div class="progress-bar-item">
+                                    <div class="pb-info">
+                                        <span>Phase 3: Cloud & DevOps</span>
+                                        <span class="val">0%</span>
+                                    </div>
+                                    <div class="pb-track"><div class="pb-fill" style="width: 0%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 5. Resume Management Section -->
+                    <div class="dash-card resume-management-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-file-invoice"></i> Resume Management</h3>
+                        </div>
+                        <div class="resume-manager-box">
+                            <div class="resume-status-col">
+                                <div class="resume-icon-box"><i class="fas fa-file-pdf"></i></div>
+                                <div class="resume-text-info">
+                                    <h4 id="resumeFileName">No resume uploaded yet</h4>
+                                    <p id="resumeUploadDate">Upload your resume to start AI matching</p>
+                                    <p id="resumeAnalysisStatus" style="font-size:0.8rem; margin-top: 5px; color: var(--text-muted);"><i class="fas fa-clock"></i> No analysis available</p>
+                                    <p id="resumeCount" style="font-size:0.75rem; margin-top: 5px; color: #10B981; font-weight: 600;"><i class="fas fa-files-o"></i> Resumes: 0</p>
+                                </div>
+                            </div>
+                            <div class="resume-actions-col">
+                                <button class="btn btn-outline" id="downloadResumeBtn" onclick="downloadResume()" disabled><i class="fas fa-download"></i> Download Resume</button>
+                                <a href="upload-resume.html" class="btn btn-primary"><i class="fas fa-file-upload"></i> Upload Resume</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5b. Skills Information Section -->
+                    <div class="dash-card skills-info-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-cogs"></i> Skills Information</h3>
+                        </div>
+                        <div style="padding: 20px;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div>
+                                    <h4 style="margin-bottom: 10px; color: #34D399; font-size: 0.9rem;"><i class="fas fa-check-circle"></i> Matched Skills</h4>
+                                    <div id="profileMatchedSkills" style="display: flex; flex-wrap: wrap; gap: 5px;">
+                                        <span style="color:var(--text-muted);font-size:0.8rem;">No data</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 10px; color: #F87171; font-size: 0.9rem;"><i class="fas fa-times-circle"></i> Missing Skills</h4>
+                                    <div id="profileMissingSkills" style="display: flex; flex-wrap: wrap; gap: 5px;">
+                                        <span style="color:var(--text-muted);font-size:0.8rem;">No data</span>
+                                    </div>
+                                </div>
+                                <div style="grid-column: span 2;">
+                                    <h4 style="margin-bottom: 10px; color: #60A5FA; font-size: 0.9rem;"><i class="fas fa-plus-circle"></i> Additional Skills</h4>
+                                    <div id="profileAdditionalSkills" style="display: flex; flex-wrap: wrap; gap: 5px;">
+                                        <span style="color:var(--text-muted);font-size:0.8rem;">No data</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Account Settings Panel -->
+                    <div class="dash-card settings-card" id="settingsSection">
+                        <div class="card-header">
+                            <h3><i class="fas fa-sliders-h"></i> Account Settings</h3>
+                        </div>
+                        
+                        <div class="settings-msg" id="settingsMsg" style="display: none;"></div>
+
+                        <form id="profileForm" onsubmit="saveProfile(event)">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="settingsUserId">User ID (System Generated)</label>
+                                    <input type="text" id="settingsUserId" value="USR001" disabled style="background:rgba(255,255,255,0.05);color:#A78BFA;font-family:monospace;font-weight:700;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="settingsName">Full Name</label>
+                                    <input type="text" id="settingsName" placeholder="Enter full name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="settingsEmail">Email Address</label>
+                                    <input type="email" id="settingsEmail" placeholder="Enter email address" required disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="settingsPhone">Phone Number</label>
+                                    <input type="text" id="settingsPhone" placeholder="Enter phone number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="settingsLocation">Location</label>
+                                    <input type="text" id="settingsLocation" placeholder="Bengaluru, India">
+                                </div>
+                                <div class="form-group grid-full">
+                                    <label for="settingsBio">Bio</label>
+                                    <textarea id="settingsBio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                                </div>
+                            </div>
+                            <div class="form-actions-row">
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Profile</button>
+                            </div>
+                        </form>
+
+                        <div class="settings-divider"></div>
+
+                        <h4>Change Password</h4>
+                        <form id="passwordForm" onsubmit="changePassword(event)" style="margin-top: 15px;">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="currentPassword">Current Password</label>
+                                    <input type="password" id="currentPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newPassword">New Password</label>
+                                    <input type="password" id="newPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background: var(--card-bg); padding: 30px; border-radius: 12px; width: 90%; max-width: 600px; max-height: 90vh; overflow-y: auto; border: 1px solid var(--border-color);">
+            <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0;"><i class="fas fa-user-edit"></i> Edit Profile</h3>
+                <button onclick="closeEditProfileModal()" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.2rem;"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <form id="editProfileModalForm" onsubmit="saveProfileModal(event)">
+                <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group grid-full" style="grid-column: span 2;">
+                        <label>Profile Photo</label>
+                        <input type="file" id="modalProfilePhoto" accept="image/*" class="form-control" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 6px; color: white;">
+                    </div>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="modalName" required class="form-control" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 6px; color: white;">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="modalEmail" class="form-control" disabled style="width: 100%; padding: 10px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-muted);">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" id="modalPhone" class="form-control" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 6px; color: white;">
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" id="modalLocation" class="form-control" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 6px; color: white;">
+                    </div>
+                    <div class="form-group">
+                        <label>Education</label>
+                        <input type="text" id="modalEducation" class="form-control" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 6px; color: white;" placeholder="e.g. B.Tech Computer Science">
+                    </div>
+                    <div class="form-group">
+                        <label>College / University</label>
+                        <input type="text" id="modalCollege" class="form-control" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 6px; color: white;">
+                    </div>
+                    <div class="form-group">
+                        <label>Graduation Year</label>
+                        <input type="number" id="modalGradYear" class="form-control" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 6px; color: white;" placeholder="e.g. 2025">
+                    </div>
+                    <div class="form-group">
+                        <label>Career Goal</label>
+                        <input type="text" id="modalCareerGoal" class="form-control" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 6px; color: white;">
+                    </div>
+                    <div class="form-group">
+                        <label>LinkedIn Profile</label>
+                        <input type="url" id="modalLinkedin" class="form-control" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 6px; color: white;">
+                    </div>
+                    <div class="form-group">
+                        <label>GitHub Profile</label>
+                        <input type="url" id="modalGithub" class="form-control" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 6px; color: white;">
+                    </div>
+                    <div class="form-group grid-full" style="grid-column: span 2;">
+                        <label>Short Bio</label>
+                        <textarea id="modalBio" rows="3" class="form-control" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 6px; color: white; resize: vertical;"></textarea>
+                    </div>
+                </div>
+                
+                <div class="modal-actions" style="display: flex; justify-content: flex-end; gap: 15px; margin-top: 20px;">
+                    <button type="button" class="btn btn-outline" onclick="closeEditProfileModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="saveProfileBtnModal"><i class="fas fa-save"></i> Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="groq.js"></script>
+    <script src="header.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>
+
