@@ -167,7 +167,7 @@ if (loginForm) {
         setLoading("loginBtn", true);
 
         try {
-            const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+            const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
             const response = await fetch(`${API_BASE}/api/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -333,7 +333,7 @@ if (registerForm) {
         setLoading("registerBtn", true);
 
         try {
-            const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+            const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
             const response = await fetch(`${API_BASE}/api/auth/register`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

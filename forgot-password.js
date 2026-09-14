@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             userToken = token;
             
-            const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+            const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
             accessBtn.disabled = true;
             accessBtn.textContent = 'Verifying...';
 
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         forgotMsg.style.display = 'none';
 
         const email = emailInput.value.trim();
-        const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+        const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
 
         if (step === 1) {
             // Step 1: Verify Email

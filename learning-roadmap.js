@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
-    const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+    const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
     let roleName = null;
     try {
         const jobRes = await fetch(`${API_BASE}/api/job-selection/user/${sessionData.user_id}`);
@@ -409,7 +409,7 @@ async function setupProgressTracking(totalSteps, roleName) {
 
     // Fetch existing progress from backend
     const sessionData = JSON.parse(sessionStorage.getItem("skillgap_session") || "null");
-    const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+    const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
     let completedSkillNames = [];
     
     if (sessionData && sessionData.user_id) {

@@ -13,7 +13,7 @@ async function fetchUserReportData() {
         return null;
     }
 
-    const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+    const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
     let allResumes = [];
     let latestAnalysis = null;
     let syncedResumeData = null;
@@ -443,7 +443,7 @@ async function saveReportToBackend(format) {
     if (!data) return;
     const sessionData = data.session;
     if (sessionData && sessionData.user_id) {
-        const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+        const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
         fetch(`${API_BASE}/api/reports`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -586,7 +586,7 @@ function initUserInfo() {
 async function fetchRecentReports(sessionData) {
     if (sessionData && sessionData.user_id) {
         try {
-            const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+            const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
             const response = await fetch(`${API_BASE}/api/analysis/user/${sessionData.user_id}`);
             if (response.ok) {
                 const reports = await response.json();

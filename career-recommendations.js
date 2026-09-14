@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // ── 2. Fetch Latest Resume from Backend ───────────────────
     let userResumeSkills = [];
     try {
-        const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+        const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
         const resumeRes = await fetch(`${API_BASE}/api/resumes/user/${sessionData.user_id}`);
         if (resumeRes.ok) {
             const resumes = await resumeRes.json();

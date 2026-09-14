@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const resumeData = JSON.parse(sessionStorage.getItem("skillgap_resume") || "null");
     const scoreData  = JSON.parse(sessionStorage.getItem("skillgap_score") || "null");
     // Determine API_BASE
-    const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+    const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
 
     // Fetch profile data and job role from backend
     let profileData = {};
@@ -505,7 +505,7 @@ function handleAvatarFile(file, autoSave) {
         if (autoSave) {
             // Directly save to backend if uploaded from main profile page
             const session = JSON.parse(sessionStorage.getItem("skillgap_session") || "{}");
-            const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+            const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
             try {
                 await fetch(`${API_BASE}/api/profile/${session.user_id}`, {
                     method: 'PUT',
@@ -530,7 +530,7 @@ function handleAvatarFile(file, autoSave) {
 async function saveProfileModal(e) {
     e.preventDefault();
     const session = JSON.parse(sessionStorage.getItem("skillgap_session") || "{}");
-    const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+    const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
     
     const updateData = {
         name: document.getElementById("modalName").value,

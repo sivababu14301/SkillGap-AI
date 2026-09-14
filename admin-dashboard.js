@@ -145,7 +145,7 @@ function switchLearningSubTab(subId) {
 
 async function loadAllData() {
     try {
-        const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+        const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
         
         const endpoints = [
             fetch(`${API_BASE}/api/admin/users`),
@@ -643,7 +643,7 @@ function confirmDeleteUser(id) {
 }
 
 async function confirmCallback() {
-    const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+    const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
     
     if (deleteTarget.type === 'user') {
         try {

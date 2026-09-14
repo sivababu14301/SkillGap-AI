@@ -41,6 +41,11 @@ app.register_blueprint(job_selection_bp, url_prefix="/api/job-selection")
 app.register_blueprint(dashboard_bp, url_prefix="/api/dashboard")
 app.register_blueprint(ai_bp, url_prefix="/api/ai")
 app.register_blueprint(notification_bp, url_prefix="/api/user/messages")
+
+@app.route("/health")
+def health_check():
+    return {"status": "ok"}, 200
+
 @app.route("/")
 def serve_index():
     return send_from_directory(app.static_folder, "index.html")

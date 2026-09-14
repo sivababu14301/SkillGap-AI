@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
-    const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+    const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
     
     let targetRoleName, requiredSkills, userSkills, matchedSkills, missingSkills, additionalSkills, matchPercentage, resumeScore, atsScore, placementReadiness;
     

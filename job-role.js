@@ -336,7 +336,7 @@ async function goToAnalysis() {
     
     if (session && session.user_id) {
         try {
-            const API_BASE = (window.location.protocol === 'file:' || window.location.port !== '5000') ? 'http://localhost:5000' : '';
+            const API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://localhost:5000' : '';
             const res = await fetch(`${API_BASE}/api/job-selection`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
