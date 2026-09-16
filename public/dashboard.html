@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard â€“ SkillGap AI</title>
+    <meta name="description" content="Your AI-powered career dashboard. Track skills, analysis, and career readiness.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <img src="assets/logo.png" class="custom-logo" alt="SkillGap AI">
+                <span class="logo-text">SkillGap <span class="logo-ai">AI</span></span>
+            </div>
+            <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">Main Menu</div>
+            <ul class="nav-list">
+                <li class="nav-item active" data-page="dashboard">
+                    <a href="dashboard.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-th-large"></i></span>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-page="upload">
+                    <a href="upload-resume.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-file-upload"></i></span>
+                        <span class="nav-text">Upload Resume</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-page="jobrole">
+                    <a href="job-role.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-briefcase"></i></span>
+                        <span class="nav-text">Job Role Selection</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-page="analysis">
+                    <a href="skills-gap.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-chart-pie"></i></span>
+                        <span class="nav-text">Skills Gap Analysis</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-page="score">
+                    <a href="resume-score.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-star"></i></span>
+                        <span class="nav-text">Resume Score</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-page="career">
+                    <a href="career-recommendations.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-rocket"></i></span>
+                        <span class="nav-text">Career Recommendations</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-page="roadmap">
+                    <a href="learning-roadmap.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-road"></i></span>
+                        <span class="nav-text">Learning Roadmap</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-page="reports">
+                    <a href="reports.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
+                        <span class="nav-text">Reports</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-section-label">Account</div>
+            <ul class="nav-list">
+                <li class="nav-item" data-page="profile">
+                    <a href="profile.html" class="nav-link">
+                        <span class="nav-icon"><i class="fas fa-user-circle"></i></span>
+                        <span class="nav-text">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item logout-item">
+                    <a href="#" class="nav-link" onclick="logout()">
+                        <span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span>
+                        <span class="nav-text">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-mini-card">
+                <div class="user-avatar-sm" id="sidebarAvatar">S</div>
+                <div class="user-mini-info">
+                    <span class="user-mini-name" id="sidebarName">Loading...</span>
+                    <span class="user-mini-role" id="sidebarUserId" style="color:#A78BFA;font-family:monospace;font-weight:700">USR001</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN WRAPPER ===== -->
+    <div class="main-wrapper" id="mainWrapper">
+
+        <!-- TOP HEADER -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+                <a href="dashboard.html" class="mobile-nav-logo" id="mobileLogo" style="display:none;">
+                    <img src="assets/logo.png" class="custom-logo" alt="SkillGap AI">
+                    <span class="logo-text">SkillGap <span class="logo-ai">AI</span></span>
+                </a>
+                <div class="header-search" id="searchWrap">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search pages..." id="searchInput" autocomplete="off">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="notif-wrapper" style="position:relative;">
+                    <button class="header-btn notif-btn" id="notifBtn" onclick="toggleNotifications()">
+                        <i class="fas fa-bell"></i>
+                        <span class="notif-badge" id="notifBadge" style="display:none;">0</span>
+                    </button>
+                    <div class="notif-dropdown" id="notifDropdown" style="display:none; position:absolute; top:100%; right:0; width:320px; background:#1E293B; border:1px solid rgba(255,255,255,0.1); border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.5); z-index:1000; overflow:hidden; margin-top:10px;">
+                        <div class="notif-dropdown-header" style="padding:16px; border-bottom:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items:center;">
+                            <h3 style="margin:0; font-size:1rem; font-weight:600;">Notifications</h3>
+                        </div>
+                        <div class="notif-dropdown-body" id="notifDropdownBody" style="max-height:400px; overflow-y:auto; padding:0;">
+                            <div style="padding:20px; text-align:center; color:#94A3B8; font-size:0.9rem;">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-profile" id="headerProfile">
+                    <div class="profile-avatar" id="headerAvatar">S</div>
+                    <span class="profile-name" id="headerName">User</span>
+                    <i class="fas fa-chevron-down profile-arrow"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- DASHBOARD CONTENT -->
+        <main class="dashboard-content">
+
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="welcome-text">
+                    <h1>Hello, <span id="welcomeName">User</span> 👋</h1>
+                    <p>Here's your career overview for today</p>
+                </div>
+                <div class="welcome-date" id="welcomeDate"></div>
+                <a href="upload-resume.html" class="btn-start-analysis">
+                    <i class="fas fa-plus"></i> New Analysis
+                </a>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-top">
+                        <div>
+                            <p class="stat-label">Resumes Uploaded</p>
+                            <h2 class="stat-value" id="statResumeScore">N/A</h2>
+                        </div>
+                        <div class="stat-icon-box purple-box">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                    </div>
+                    <a href="upload-resume.html" class="stat-view-link"><i class="fas fa-eye"></i> View</a>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-top">
+                        <div>
+                            <p class="stat-label">Skills Detected</p>
+                            <h2 class="stat-value green-val" id="statATSScore">N/A</h2>
+                        </div>
+                        <div class="stat-icon-box green-box">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                    </div>
+                    <a href="skills-gap.html" class="stat-view-link"><i class="fas fa-eye"></i> View</a>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-top">
+                        <div>
+                            <p class="stat-label">Match Percentage</p>
+                            <h2 class="stat-value blue-val" id="statMatch">N/A</h2>
+                        </div>
+                        <div class="stat-icon-box blue-box">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                    </div>
+                    <a href="skills-gap.html" class="stat-view-link"><i class="fas fa-eye"></i> View</a>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-top">
+                        <div>
+                            <p class="stat-label">Placement Readiness</p>
+                            <h2 class="stat-value orange-val" id="statReadiness">N/A</h2>
+                        </div>
+                        <div class="stat-icon-box orange-box">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    <a href="career-recommendations.html" class="stat-view-link"><i class="fas fa-eye"></i> View</a>
+                </div>
+            </div>
+
+            <!-- Middle Row: Recent Analysis + Skills Chart -->
+            <div class="mid-grid">
+
+                <!-- Recent Analysis Table -->
+                <div class="dash-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-history"></i> Recent Analysis</h3>
+                        <a href="reports.html" class="view-all-btn">View All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="recent-table">
+                            <thead>
+                                <tr>
+                                    <th>Job Role</th>
+                                    <th>Match %</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentAnalysisTableBody">
+                                <!-- Populated dynamically or with fallback data -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Skills Overview Chart -->
+                <div class="dash-card chart-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie"></i> Skills Overview</h3>
+                    </div>
+                    <div class="chart-layout">
+                        <div class="doughnut-wrapper">
+                            <canvas id="skillsChart"></canvas>
+                            <div class="chart-center-label">
+                                <span class="chart-total" id="chartTotal">0</span>
+                                <span class="chart-sub">Total Skills</span>
+                            </div>
+                        </div>
+                        <div class="chart-legend" id="skillsChartLegend">
+                            <div class="legend-item">
+                                <span class="legend-dot matched-dot"></span>
+                                <span class="legend-label">Matched</span>
+                                <span class="legend-count" id="legendMatched">0</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot missing-dot"></span>
+                                <span class="legend-label">Missing</span>
+                                <span class="legend-count" id="legendMissing">0</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot additional-dot"></span>
+                                <span class="legend-label">Additional</span>
+                                <span class="legend-count" id="legendAdditional">0</span>
+                            </div>
+                        </div> <!-- closes chart-legend -->
+                    </div> <!-- closes chart-layout -->
+                </div> <!-- closes dash-card -->
+            </div> <!-- closes mid-grid -->
+
+            <!-- Bottom Row: Readiness + Recommended Roles + Quick Actions -->
+            <div class="bottom-grid">
+
+                <!-- Career Readiness Ring -->
+                <div class="dash-card readiness-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-trophy"></i> Career Readiness</h3>
+                    </div>
+                    <div class="readiness-content">
+                        <div class="readiness-ring-wrapper">
+                            <svg class="readiness-ring" viewBox="0 0 120 120">
+                                <defs>
+                                    <linearGradient id="readinessGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#7C3AED"/>
+                                        <stop offset="100%" stop-color="#3B82F6"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle class="ring-bg"   cx="60" cy="60" r="50"/>
+                                <circle class="ring-fill" id="readinessRing" cx="60" cy="60" r="50"
+                                        stroke-dasharray="314" stroke-dashoffset="314"/>
+                            </svg>
+                            <div class="ring-center">
+                                <span class="ring-pct" id="readinessPct">0%</span>
+                                <span class="ring-label">Ready</span>
+                            </div>
+                        </div>
+                        <div class="readiness-details" id="readinessDetails">
+                            <!-- Currently static, could be dynamic -->
+                            <div class="readiness-bar-item">
+                                <div class="rb-labels"><span>Technical Skills</span><span>80%</span></div>
+                                <div class="rb-track"><div class="rb-fill" style="width:80%; background:linear-gradient(to right,#7C3AED,#3B82F6)"></div></div>
+                            </div>
+                            <div class="readiness-bar-item">
+                                <div class="rb-labels"><span>Soft Skills</span><span>70%</span></div>
+                                <div class="rb-track"><div class="rb-fill" style="width:70%; background:linear-gradient(to right,#10B981,#34D399)"></div></div>
+                            </div>
+                            <div class="readiness-bar-item">
+                                <div class="rb-labels"><span>Projects</span><span>75%</span></div>
+                                <div class="rb-track"><div class="rb-fill" style="width:75%; background:linear-gradient(to right,#F59E0B,#FBBF24)"></div></div>
+                            </div>
+                            <div class="readiness-bar-item">
+                                <div class="rb-labels"><span>Certifications</span><span>60%</span></div>
+                                <div class="rb-track"><div class="rb-fill" style="width:60%; background:linear-gradient(to right,#EF4444,#F87171)"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommended Roles -->
+                <div class="dash-card roles-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-star"></i> Recommended Job Roles</h3>
+                    </div>
+                    <div class="roles-list" id="recommendedRolesList">
+                        <!-- Dynamically populated by dashboard.js -->
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="dash-card actions-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    </div>
+                    <div class="actions-grid">
+                        <a href="upload-resume.html" class="action-btn action-upload">
+                            <div class="action-icon"><i class="fas fa-file-upload"></i></div>
+                            <span>Upload Resume</span>
+                        </a>
+                        <a href="job-role.html" class="action-btn action-analyze">
+                            <div class="action-icon"><i class="fas fa-brain"></i></div>
+                            <span>Analyze Skills</span>
+                        </a>
+                        <a href="learning-roadmap.html" class="action-btn action-roadmap">
+                            <div class="action-icon"><i class="fas fa-road"></i></div>
+                            <span>View Roadmap</span>
+                        </a>
+                        <a href="reports.html" class="action-btn action-report">
+                            <div class="action-icon"><i class="fas fa-download"></i></div>
+                            <span>Download Report</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Overlay (mobile sidebar) -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <script src="auth.js"></script>
+    <script src="groq.js"></script>
+    <script src="header.js"></script>
+    <script src="job-roles-data.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
+

@@ -4,3 +4,14 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+# Temporary development scripts
+*.js
+!public/*.js
+!backend/*.js
+*.py
+!app.py
+!backend/**/*.py
+
+*.txt
+!requirements.txt

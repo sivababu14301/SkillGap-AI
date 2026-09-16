@@ -22,8 +22,8 @@ from backend.seed import seed_data
 
 from backend.routes.profile_routes import profile_bp
 from backend.routes.notification_routes import notification_bp
-# Initialize Flask app, pointing to the parent directory as static folder
-app = Flask(__name__, static_folder="../", static_url_path="")
+# Initialize Flask app, pointing to the parent directory's public folder
+app = Flask(__name__, static_folder="../public", static_url_path="")
 CORS(app)
 
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "skillgap-secret-key-2025")
