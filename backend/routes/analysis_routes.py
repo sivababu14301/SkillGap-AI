@@ -63,6 +63,7 @@ def get_user_analyses(user_id):
 def calculate_analysis():
     data = request.get_json() or {}
     user_id = data.get("user_id")
+    role_name_override = data.get("role_name")
     
     if not user_id:
         return jsonify({"error": "user_id is required"}), 400
@@ -78,15 +79,18 @@ def calculate_analysis():
             user = None
     user_name = user.get("name", "Unknown User") if user else "Unknown User"
 
-    # Fetch latest job selection
-    job_selection = db.job_selections.find_one(
-        {"user_id": user_id},
-        sort=[("selected_at", -1)]
-    )
-    if not job_selection:
-        return jsonify({"error": "No job selection found for user"}), 404
-        
-    selected_role_name = job_selection.get("selected_job_role", "").strip()
+    # Fetch latest job selection or use override
+    selected_role_name = ""
+    if role_name_override:
+        selected_role_name = role_name_override.strip()
+    else:
+        job_selection = db.job_selections.find_one(
+            {"user_id": user_id},
+            sort=[("selected_at", -1)]
+        )
+        if not job_selection:
+            return jsonify({"error": "No job selection found for user and no role_name provided"}), 404
+        selected_role_name = job_selection.get("selected_job_role", "").strip()
     
     # Fetch latest resume
     resume = db.resumes.find_one(

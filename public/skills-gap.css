@@ -60,7 +60,7 @@
 /* Main Grid */
 .analysis-main-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     margin-bottom: 24px;
 }
@@ -262,4 +262,21 @@
     .chart-card-sg { padding: 16px; }
     .radar-wrapper { height: 280px; width: 100%; max-width: 100%; }
     .radar-wrapper canvas { width: 100% !important; height: auto !important; }
+}
+
+/* Additional Skills Overflow Fix */
+.additional-skills-list {
+    max-height: 360px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding-right: 8px;
+}
+
+.additional-skill-item {
+    min-height: 48px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }

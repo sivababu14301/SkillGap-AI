@@ -201,7 +201,7 @@ function setupAIRecommendation() {
 }
 
 /* ── Select Role ─────────────────────────────────────────────── */
-function selectRole(roleId) {
+async function selectRole(roleId) {
     selectedRole = jobRoles.find(r => r.id === roleId);
     if (!selectedRole) return;
 
@@ -240,13 +240,47 @@ function selectRole(roleId) {
         }, 50);
     }
 
-    // Calculate match
-    const userLower   = userResumeSkills.map(s => s.toLowerCase().trim());
-    const matchedSkills = selectedRole.skills.filter(rs => userLower.includes(rs.toLowerCase().trim()));
-    const missingSkills = selectedRole.skills.filter(rs => !userLower.includes(rs.toLowerCase().trim()));
-    let matchPct      = 0;
-    if (selectedRole.skills.length > 0) {
-        matchPct = Math.round((matchedSkills.length / selectedRole.skills.length) * 100);
+    // Fetch canonical analysis result from backend
+    const sessionData = JSON.parse(sessionStorage.getItem("skillgap_session") || "null");
+    let matchPct = 0;
+    let matchedSkillsCount = 0;
+    let missingSkillsCount = 0;
+    let requiredSkillsCount = selectedRole.skills ? selectedRole.skills.length : 0;
+    let allSkillsHtml = "";
+    
+    // Default visually fallback
+    if (selectedRole.skills) {
+        allSkillsHtml = selectedRole.skills.map(s => `<span class="skill-tag">${s}</span>`).join("");
+    }
+
+    if (sessionData && sessionData.user_id) {
+        try {
+            const API_BASE = (window.location.protocol === 'file:') ? 'http://127.0.0.1:5000' : ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '5000') ? 'http://127.0.0.1:5000' : '';
+            const res = await fetch(`${API_BASE}/api/analysis/calculate`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    user_id: sessionData.user_id,
+                    role_name: selectedRole.name
+                })
+            });
+            
+            if (res.ok) {
+                const data = await res.json();
+                matchPct = data.percentage || 0;
+                matchedSkillsCount = (data.matched || []).length;
+                missingSkillsCount = (data.missing || []).length;
+                requiredSkillsCount = matchedSkillsCount + missingSkillsCount;
+                
+                // Build HTML from API response directly
+                allSkillsHtml = (data.matched || []).map(s => `<span class="skill-tag matched"><i class="fas fa-check" style="font-size:0.65rem;margin-right:4px;"></i>${s}</span>`).join("") + 
+                                (data.missing || []).map(s => `<span class="skill-tag">${s}</span>`).join("");
+            } else {
+                console.error("Failed to calculate skills gap on backend");
+            }
+        } catch (err) {
+            console.error("Error connecting to backend for calculation:", err);
+        }
     }
 
     // Show details panel
@@ -265,10 +299,7 @@ function selectRole(roleId) {
     iconDiv.innerHTML = `<i class="${selectedRole.icon}"></i>`;
 
     // Skills tags with match highlighting
-    document.getElementById("rdSkillsTags").innerHTML = selectedRole.skills.map(s => {
-        const isMatched = userLower.includes(s.toLowerCase());
-        return `<span class="skill-tag${isMatched ? " matched" : ""}">${isMatched ? '<i class="fas fa-check" style="font-size:0.65rem;margin-right:4px;"></i>' : ''}${s}</span>`;
-    }).join("");
+    document.getElementById("rdSkillsTags").innerHTML = allSkillsHtml;
     
     // Add Soft Skills and Tools to the details panel if they exist
     if (selectedRole.soft_skills && selectedRole.soft_skills.length > 0) {
@@ -302,9 +333,9 @@ function selectRole(roleId) {
 
     // Match bar
     document.getElementById("mpVal").textContent      = `${matchPct}%`;
-    document.getElementById("mpMatched").textContent  = matchedSkills.length;
-    document.getElementById("mpMissing").textContent  = missingSkills.length;
-    document.getElementById("mpTotal").textContent    = selectedRole.skills.length;
+    document.getElementById("mpMatched").textContent  = matchedSkillsCount;
+    document.getElementById("mpMissing").textContent  = missingSkillsCount;
+    document.getElementById("mpTotal").textContent    = requiredSkillsCount;
 
     const fill = document.getElementById("mpFill");
     // Small delay to trigger CSS transition

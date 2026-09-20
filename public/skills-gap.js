@@ -97,9 +97,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (missingSkills.length === 0) listMissing.innerHTML = "<li><span class='text-muted'>No missing skills!</span></li>";
     else listMissing.innerHTML = missingSkills.map(s => `<li><i class="fas fa-times-circle"></i> ${s}</li>`).join("");
 
+    // Identify Tools from User Skills
+    const commonTools = ["git", "vs code", "vscode", "figma", "canva", "postman", "github", "docker", "kubernetes", "jira", "trello", "slack", "aws", "azure", "gcp", "excel", "power bi", "tableau", "npm", "webpack", "jenkins", "linux", "terminal"];
+    const userLower = userSkills.map(s => s.toLowerCase().trim());
+    
+    // Find all tools the user has
+    const foundTools = userSkills.filter(s => commonTools.includes(s.toLowerCase().trim()));
+    
+    // Remove found tools from additionalSkills so they don't show twice
+    const pureAdditional = additionalSkills.filter(s => !commonTools.includes(s.toLowerCase().trim()));
+
+    document.getElementById("countAdditional").textContent = pureAdditional.length;
     const listAdditional = document.getElementById("listAdditional");
-    if (additionalSkills.length === 0) listAdditional.innerHTML = "<li><span class='text-muted'>No additional skills.</span></li>";
-    else listAdditional.innerHTML = additionalSkills.map(s => `<li><i class="fas fa-star"></i> ${s}</li>`).join("");
+    if (pureAdditional.length === 0) listAdditional.innerHTML = "<li><span class='text-muted'>No additional skills.</span></li>";
+    else listAdditional.innerHTML = pureAdditional.map(s => `<li class="additional-skill-item"><i class="fas fa-star"></i> ${s}</li>`).join("");
+
+    const countToolsEl = document.getElementById("countTools");
+    if (countToolsEl) countToolsEl.textContent = foundTools.length;
+    const listTools = document.getElementById("listTools");
+    if (listTools) {
+        if (foundTools.length === 0) listTools.innerHTML = "<li><span class='text-muted'>No additional tools detected.</span></li>";
+        else listTools.innerHTML = foundTools.map(s => `<li><i class="fas fa-tools" style="color:#A78BFA"></i> ${s}</li>`).join("");
+    }
 
     // 6. Draw Chart
     drawChart(matchPercentage);

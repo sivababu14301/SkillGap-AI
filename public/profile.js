@@ -462,17 +462,32 @@ function scrollToSettings() {
 
 // Simulate resume download
 function downloadResume() {
-    const resumeData = JSON.parse(sessionStorage.getItem("skillgap_resume") || "null");
-    if (!resumeData) return;
+    let resumeText = "SkillGap AI Resume content";
+    let fileName = "Resume_Evaluated.txt";
+    
+    let resumeData = JSON.parse(sessionStorage.getItem("skillgap_resume") || "null");
+    if (resumeData) {
+        resumeText = resumeData.text || resumeText;
+        fileName = resumeData.filename ? resumeData.filename.replace(".pdf", "_Evaluated.txt") : fileName;
+    } else {
+        const userData = JSON.parse(sessionStorage.getItem("skillgap_user_data") || "null");
+        if (userData && userData.resumes && userData.resumes.length > 0) {
+            const latest = userData.resumes[userData.resumes.length - 1];
+            resumeText = latest.resume_text || resumeText;
+            fileName = latest.file_name ? latest.file_name.replace(".pdf", "_Evaluated.txt") : fileName;
+        } else {
+            return;
+        }
+    }
     
     showSettingsMessage("settingsMsg", "Preparing resume download...", "success");
     
     // Simulate downloading resume text as txt file
-    const blob = new Blob([resumeData.text || "SkillGap AI Resume content"], { type: "text/plain" });
+    const blob = new Blob([resumeText], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = resumeData.filename ? resumeData.filename.replace(".pdf", "_Evaluated.txt") : "Resume_Evaluated.txt";
+    a.download = fileName;
     a.click();
     URL.revokeObjectURL(url);
 }

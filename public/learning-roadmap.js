@@ -305,8 +305,7 @@ const container = document.getElementById("phasesContainer");
                         const isKnown = checkKnown(s.name);
                         return `
                         <div class="detailed-skill-card ${isKnown ? 'skill-known' : ''}" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:20px; position:relative; overflow:hidden; ${isKnown ? 'opacity: 0.8;' : ''}">
-                            ${isKnown ? '<div style="position:absolute; top:12px; right:12px; background:rgba(16,185,129,0.15); color:#10B981; border:1px solid rgba(16,185,129,0.3); padding:4px 10px; border-radius:20px; font-size:0.75rem; font-weight:700;"><i class="fas fa-check-circle"></i> Already Known</div>' : ''}
-                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                            <div class="card-header" style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; flex-wrap:wrap; gap:16px;">
                                 <div style="display:flex; align-items:center; gap:12px;">
                                     <div style="background:${s.bg}; color:${s.color}; width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.2rem;">
                                         <i class="${s.icon}"></i>
@@ -316,7 +315,8 @@ const container = document.getElementById("phasesContainer");
                                         <div style="font-size:1.2rem; font-weight:700; color:white;">${s.name}</div>
                                     </div>
                                 </div>
-                                <div style="display:flex; gap:8px;">
+                                <div class="badge-container" style="display:flex; align-items:center; flex-wrap:wrap; gap:8px;">
+                                    ${isKnown ? '<span style="background:rgba(16,185,129,0.15); color:#10B981; border:1px solid rgba(16,185,129,0.3); padding:4px 10px; border-radius:20px; font-size:0.75rem; font-weight:700;"><i class="fas fa-check-circle"></i> Already Known</span>' : ''}
                                     <span style="font-size:0.75rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:4px 10px; border-radius:20px; color:#A78BFA;"><i class="fas fa-tachometer-alt"></i> ${s.difficulty}</span>
                                     <span style="font-size:0.75rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:4px 10px; border-radius:20px; color:#60A5FA;"><i class="fas fa-clock"></i> ${s.time}</span>
                                 </div>
@@ -665,6 +665,17 @@ function animateImprovementRing(target) {
    RECOMMENDED COURSES
 ══════════════════════════════════════════════════════════ */
 function renderCourses(missing) {
+    if (!missing || missing.length === 0) {
+        document.getElementById("coursesGrid").innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; background: rgba(16, 185, 129, 0.05); border: 1px dashed rgba(16, 185, 129, 0.3); border-radius: 16px;">
+                <i class="fas fa-check-circle" style="font-size: 2rem; color: #10B981; margin-bottom: 12px; display: block;"></i>
+                <h3 style="color: #10B981; margin-bottom: 8px;">Excellent! You have no missing skills.</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">You are perfectly aligned with this job role's requirements.</p>
+            </div>
+        `;
+        return;
+    }
+
     const sorted = missing.map(skill => {
         const meta = window.getSkillMeta ? getSkillMeta(skill) : { icon:"fas fa-graduation-cap", bg:"rgba(59,130,246,0.15)", color:"#60A5FA", gradient:"linear-gradient(to right,#3B82F6,#60A5FA)" };
         return {
@@ -700,9 +711,10 @@ function renderCourses(missing) {
    PROJECT RECOMMENDATIONS
 ══════════════════════════════════════════════════════════ */
 function renderProjects(role, missing) {
+    let defaultTags = missing && missing.length > 0 ? missing : ["Core Concepts", "Best Practices"];
     const projects = window.getRoleProjects ? getRoleProjects(role) : [
-        { emoji:"🏢", name:"Portfolio Project 1", desc:"A practical project applying your learned skills.", tags:missing.slice(0,3), purpose:"Skill Demonstration", num:"Project 01" },
-        { emoji:"🚀", name:"Portfolio Project 2", desc:"Advanced implementation for your resume.", tags:missing.slice(0,2), purpose:"Skill Demonstration", num:"Project 02" }
+        { emoji:"🏢", name:"Portfolio Project 1", desc:"A practical project applying your learned skills.", tags:defaultTags.slice(0,3), purpose:"Skill Demonstration", num:"Project 01" },
+        { emoji:"🚀", name:"Portfolio Project 2", desc:"Advanced implementation for your resume.", tags:defaultTags.slice(0,2), purpose:"Skill Demonstration", num:"Project 02" }
     ];
 
     document.getElementById("projectsGrid").innerHTML = projects.map(p => `

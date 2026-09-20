@@ -73,6 +73,17 @@ document.getElementById("mainWrapper").innerHTML = `
     // Normalize user skills using global normalizeSkill
     const normalizedUserSkills = userResumeSkills.map(s => typeof normalizeSkill === 'function' ? normalizeSkill(s).toLowerCase() : s.toLowerCase());
 
+    let selectedRoleName = null;
+    try {
+        const jobRes = await fetch(`${API_BASE}/api/job-selection/user/${sessionData.user_id}`);
+        if (jobRes.ok) {
+            const jobData = await jobRes.json();
+            selectedRoleName = jobData.selected_job_role;
+        }
+    } catch (e) {
+        console.error("Backend fetch error for job selection", e);
+    }
+
     const evaluatedRoles = jobRoles.map(role => {
         const matchedSkills = [];
         const missingSkills = [];
@@ -135,7 +146,19 @@ document.getElementById("mainWrapper").innerHTML = `
         sorted = sorted.slice(0, 5);
     }
     
-    const topRole = sorted[0];
+    let topRole = sorted[0];
+
+    // OVERRIDE: If the user selected a specific role, it MUST be the primary topRole.
+    if (selectedRoleName) {
+        const foundRole = evaluatedRoles.find(r => r.name === selectedRoleName);
+        if (foundRole) {
+            topRole = foundRole;
+            // Ensure the topRole is strictly first in the recommended paths as well
+            sorted = sorted.filter(r => r.name !== selectedRoleName);
+            sorted.unshift(topRole);
+            if (sorted.length > 5) sorted = sorted.slice(0, 5);
+        }
+    }
 
     // If top match is very low (e.g. 0%), show a message instead of an error
     const lowMatchMessage = topRole.match < 20 ? 
